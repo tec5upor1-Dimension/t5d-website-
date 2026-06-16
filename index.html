@@ -13,13 +13,40 @@
 
 <div id="boot-screen">
     <div class="boot-content">
-        <div class="boot-logo">T5D</div>
+        <svg class="boot-logo-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bootGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+                </linearGradient>
+                <filter id="bootGlow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <text x="100" y="70" font-size="54" font-weight="800" text-anchor="middle" fill="url(#bootGradient)" font-family="Orbitron" filter="url(#bootGlow)">T5D</text>
+        </svg>
         <div class="boot-text" id="boot-text">INITIALIZING...</div>
     </div>
 </div>
 
 <header class="topbar">
-    <a href="#home" class="brand">T5D</a>
+    <a href="#home" class="brand-logo">
+        <svg class="logo-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <text x="100" y="65" font-size="42" font-weight="800" text-anchor="middle" fill="url(#logoGradient)" font-family="Orbitron">T5D</text>
+        </svg>
+    </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
@@ -43,7 +70,28 @@
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-        <img src="assets/t5d-logo.png" alt="T5D Logo" class="hero-logo">
+        <svg class="hero-logo-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
+                    <stop offset="25%" style="stop-color:#34FFC2;stop-opacity:1" />
+                    <stop offset="75%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
+                </linearGradient>
+                <filter id="heroGlow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <text x="200" y="140" font-size="90" font-weight="800" text-anchor="middle" fill="url(#heroGradient)" font-family="Orbitron" filter="url(#heroGlow)">T5D</text>
+            <!-- Circuit dots -->
+            <circle cx="340" cy="110" r="8" fill="#FF6B35" opacity="0.8"/>
+            <circle cx="355" cy="125" r="6" fill="#8B5CF6" opacity="0.6"/>
+            <circle cx="340" cy="145" r="5" fill="#00AEEF" opacity="0.7"/>
+        </svg>
         <h1>TEC5UPORT DIMENSION</h1>
         <h2>The world's first omnichain support layer for blockchain & artificial intelligence.</h2>
         <p>We are building the dimension where people and intelligence meet.</p>
