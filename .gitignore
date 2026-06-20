@@ -1,4 +1,4 @@
-# OS Files
+# OS files
 .DS_Store
 Thumbs.db
 *.swp
@@ -11,20 +11,16 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
-# Dependencies (if any)
-node_modules/
-package-lock.json
-yarn.lock
-
-# Build files
+# Build/Dist
 dist/
 build/
+node_modules/
 
 # Logs
 *.log
 npm-debug.log*
 
-# Environment files
+# Environment
 .env
 .env.local
 .env.*.local

@@ -1,0 +1,49 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">T5D Intelligence Icon</title>
+<desc id="desc">A custom T5D intelligence neural node icon inside a pentagon frame.</desc>
+<defs>
+  <linearGradient id="steel" x1="40" y1="25" x2="180" y2="195" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#F7FAFF"/>
+    <stop offset="32%" stop-color="#C7D3E0"/>
+    <stop offset="62%" stop-color="#2D3743"/>
+    <stop offset="100%" stop-color="#08111F"/>
+  </linearGradient>
+  <linearGradient id="blue" x1="50" y1="40" x2="175" y2="180" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#9FD7FF"/>
+    <stop offset="45%" stop-color="#1B5CFF"/>
+    <stop offset="100%" stop-color="#071B52"/>
+  </linearGradient>
+  <linearGradient id="ruby" x1="70" y1="45" x2="155" y2="180" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FF6A6A"/>
+    <stop offset="52%" stop-color="#E21B3C"/>
+    <stop offset="100%" stop-color="#6B0B1E"/>
+  </linearGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.08 0 0 0 0 0.35 0 0 0 0 1 0 0 0 0.45 0"/>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+<rect width="220" height="220" rx="34" fill="#05070D"/>
+<circle cx="110" cy="110" r="85" fill="#1B5CFF" fill-opacity="0.08"/>
+<path d="M110 20L194 81L162 180H58L26 81L110 20Z" fill="#08111F" stroke="url(#steel)" stroke-width="5"/>
+<path d="M110 40L171 84L148 157H72L49 84L110 40Z" fill="#0A1424" stroke="url(#blue)" stroke-width="2.5"/>
+
+<g filter="url(#glow)">
+  <circle cx="110" cy="110" r="35" fill="#0A1424" stroke="#C7D3E0" stroke-width="4"/>
+  <circle cx="92" cy="103" r="6" fill="#9FD7FF"/>
+  <circle cx="128" cy="103" r="6" fill="#9FD7FF"/>
+  <circle cx="110" cy="129" r="6" fill="url(#ruby)"/>
+  <path d="M92 103L110 129L128 103" stroke="#9FD7FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M82 86L65 73" stroke="#C7D3E0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M138 86L155 73" stroke="#C7D3E0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 145V166" stroke="#C7D3E0" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="65" cy="73" r="5" fill="#9FD7FF"/>
+  <circle cx="155" cy="73" r="5" fill="#9FD7FF"/>
+  <circle cx="110" cy="166" r="5" fill="#9FD7FF"/>
+</g>
+
+</svg>

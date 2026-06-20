@@ -1,227 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TEC5UPORT DIMENSION - The world's first omnichain support layer for blockchain & artificial intelligence.">
-    <meta name="keywords" content="blockchain, AI, support layer, omnichain, Web3">
-    <title>TEC5UPORT DIMENSION</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tec5uport Dimension | Omnichain Intelligent Support Layer</title>
+  <meta name="description" content="Tec5uport Dimension is building the world's first Omnichain Intelligent Support Layer. One Platform. Infinite Support.">
+  <link rel="icon" href="assets/t5d-pentagon-layered.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div id="boot-screen">
-    <div class="boot-content">
-        <svg class="boot-logo-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="bootGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
-                </linearGradient>
-                <filter id="bootGlow">
-                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                    <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-            </defs>
-            <text x="100" y="70" font-size="54" font-weight="800" text-anchor="middle" fill="url(#bootGradient)" font-family="Orbitron" filter="url(#bootGlow)">T5D</text>
-        </svg>
-        <div class="boot-text" id="boot-text">INITIALIZING...</div>
-    </div>
-</div>
-
-<header class="topbar">
-    <a href="#home" class="brand-logo">
-        <svg class="logo-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-            <text x="100" y="65" font-size="42" font-weight="800" text-anchor="middle" fill="url(#logoGradient)" font-family="Orbitron">T5D</text>
-        </svg>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Tec5uport Dimension home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>
+        <strong>TEC5UPORT DIMENSION</strong>
+        <small>OMNICHAIN INTELLIGENT SUPPORT</small>
+      </span>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav class="site-nav" id="site-nav">
-        <a href="#home">Home</a>
-        <a href="#mission">Problem</a>
-        <a href="#whitepaper">Solution</a>
-        <a href="#pillars">Pillars</a>
-        <a href="#vision">Vision</a>
-        <a href="#founder">Founder</a>
-        <a href="#contact">Contact</a>
+
+    <nav class="nav-links" data-nav-links>
+      <a href="index.html#framework">Pentagon</a>
+      <a href="index.html#pillars">Pillars</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="index.html#docs" class="nav-cta">Project Docs</a>
     </nav>
+
+    <button class="mobile-toggle" type="button" data-menu-toggle aria-label="Open navigation">Menu</button>
+  </div>
 </header>
 
-<section class="hero" id="home">
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="assets/t5d-hero.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker">Website v2 concept</div>
+        <h1><span class="gradient-text">Omnichain Intelligent Support Layer</span></h1>
+        <p class="hero-copy">
+          Tec5uport Dimension is building a trusted support ecosystem for blockchain,
+          Web3, artificial intelligence, and emerging technologies — powered by support,
+          community, intelligence, security, and education.
+        </p>
 
-    <div class="hero-content">
-        <svg class="hero-logo-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#00AEEF;stop-opacity:1" />
-                    <stop offset="25%" style="stop-color:#34FFC2;stop-opacity:1" />
-                    <stop offset="75%" style="stop-color:#8B5CF6;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
-                </linearGradient>
-                <filter id="heroGlow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                    <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-            </defs>
-            <text x="200" y="140" font-size="90" font-weight="800" text-anchor="middle" fill="url(#heroGradient)" font-family="Orbitron" filter="url(#heroGlow)">T5D</text>
-            <!-- Circuit dots -->
-            <circle cx="340" cy="110" r="8" fill="#FF6B35" opacity="0.8"/>
-            <circle cx="355" cy="125" r="6" fill="#8B5CF6" opacity="0.6"/>
-            <circle cx="340" cy="145" r="5" fill="#00AEEF" opacity="0.7"/>
-        </svg>
-        <h1>TEC5UPORT DIMENSION</h1>
-        <h2>The world's first omnichain support layer for blockchain & artificial intelligence.</h2>
-        <p>We are building the dimension where people and intelligence meet.</p>
-        <div class="hero-buttons">
-            <a href="#mission" class="btn-primary">Join The Mission</a>
-            <a href="#whitepaper" class="btn-secondary">Read Whitepaper</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="whitepaper.html">Read Whitepaper</a>
+          <a class="btn btn-secondary" href="roadmap.html">View Roadmap</a>
+          <a class="btn btn-secondary" href="#framework">Explore Pentagon</a>
         </div>
-        <div class="status-bar">
-            <span>AI NODES: ONLINE</span>
-            <span>BLOCKCHAINS: CONNECTED</span>
-            <span>SUPPORT LAYER: ACTIVE</span>
+      </div>
+
+      <aside class="hero-card" aria-label="T5D layered pentagon visual">
+        <img class="pentagon-visual" src="assets/t5d-pentagon-layered.svg" alt="T5D dimensional pentagon logo with internal layers">
+        <div class="hero-meta">
+          <div class="meta-box">
+            <strong>5</strong>
+            <span>Core Pillars</span>
+          </div>
+          <div class="meta-box">
+            <strong>T5D</strong>
+            <span>Unified Dimension</span>
+          </div>
+          <div class="meta-box">
+            <strong>∞</strong>
+            <span>Infinite Support</span>
+          </div>
         </div>
+      </aside>
     </div>
-</section>
+  </section>
 
-<section class="section" id="mission">
-    <h2 class="section-title">The Problem</h2>
-    <div class="problem-grid">
-        <div class="glass-card">
-            <div class="card-icon">🔗</div>
-            <h3>Multiple Chains</h3>
-            <p>Fragmented ecosystems create friction.</p>
-        </div>
-        <div class="glass-card">
-            <div class="card-icon">👛</div>
-            <h3>Multiple Wallets</h3>
-            <p>Users manage too many interfaces.</p>
-        </div>
-        <div class="glass-card">
-            <div class="card-icon">🤖</div>
-            <h3>Multiple AI Systems</h3>
-            <p>Knowledge is scattered across platforms.</p>
-        </div>
-        <div class="glass-card">
-            <div class="card-icon">🆘</div>
-            <h3>Scattered Support</h3>
-            <p>Finding help shouldn't be difficult.</p>
-        </div>
+  <section class="pillar-link-section" aria-label="T5D pillar quick links">
+    <div class="container">
+      <div class="pillar-link-dock">
+        <a class="pillar-link" href="#support-pillar">
+          <img src="assets/icons/t5d-icon-support.svg" alt="" aria-hidden="true">
+          <span>5upport</span>
+        </a>
+        <a class="pillar-link" href="#community-pillar">
+          <img src="assets/icons/t5d-icon-community.svg" alt="" aria-hidden="true">
+          <span>Community</span>
+        </a>
+        <a class="pillar-link" href="#intelligence-pillar">
+          <img src="assets/icons/t5d-icon-intelligence.svg" alt="" aria-hidden="true">
+          <span>Intelligence</span>
+        </a>
+        <a class="pillar-link" href="#security-pillar">
+          <img src="assets/icons/t5d-icon-security.svg" alt="" aria-hidden="true">
+          <span>Security</span>
+        </a>
+        <a class="pillar-link" href="#education-pillar">
+          <img src="assets/icons/t5d-icon-education.svg" alt="" aria-hidden="true">
+          <span>Education</span>
+        </a>
+      </div>
     </div>
-    <p class="center-text">Tec5uport Dimension unifies the experience.</p>
-</section>
+  </section>
 
-<section class="section dark" id="whitepaper">
-    <h2 class="section-title">The Solution</h2>
-    <div class="solution-grid">
-        <div class="solution-box">
-            <h3>Unified Access</h3>
-            <p>One platform for all your blockchain and AI needs.</p>
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Why T5D Exists</span>
+        <h2>Technology is advancing faster than understanding.</h2>
+        <p>
+          Users are forced to navigate fragmented ecosystems, disconnected documentation,
+          security risks, and limited support. T5D exists to bridge the gap between
+          advanced technology and human understanding.
+        </p>
+      </div>
+
+      <div class="problem-solution">
+        <div class="panel">
+          <h3>The Problem</h3>
+          <ul class="clean-list">
+            <li>Multiple blockchains, wallets, apps, and platforms.</li>
+            <li>Confusing documentation and scattered community support.</li>
+            <li>Security threats, scam risks, and unreliable guidance.</li>
+            <li>Users left behind by complexity and rapid innovation.</li>
+          </ul>
         </div>
-        <div class="solution-box">
-            <h3>Omnichain Support</h3>
-            <p>Seamless integration across multiple blockchains.</p>
+
+        <div class="panel">
+          <h3>The T5D Solution</h3>
+          <p>
+            A unified Omnichain Intelligent Support Layer where people can find guidance,
+            education, security awareness, community expertise, and collective intelligence
+            from one trusted destination.
+          </p>
+          <p><strong>Not another blockchain. Not just another AI platform. The support layer above them.</strong></p>
         </div>
-        <div class="solution-box">
-            <h3>AI Intelligence</h3>
-            <p>Advanced AI guidance for complex problems.</p>
-        </div>
-        <div class="solution-box">
-            <h3>Community Driven</h3>
-            <p>Powered by experts and the global community.</p>
-        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="section" id="pillars">
-    <h2 class="section-title">Core Pillars</h2>
-    <div class="pillar-grid">
-        <div class="pillar-card">
-            <h3>🧠 Intelligence</h3>
-            <p>AI-powered guidance and support.</p>
+  <section class="section" id="framework">
+    <div class="container framework">
+      <div>
+        <span class="eyebrow">Pentagon Framework</span>
+        <h2>The symbol is the structure.</h2>
+        <p class="lede">
+          The pentagon represents the 5 in T5D and the foundation of the ecosystem.
+          The new direction removes separate pillar icons and uses a clean dimensional
+          pentagon with internal layers, subtle circuitry, and clear pillar placement.
+        </p>
+
+        <div class="flow-list">
+          <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div>
+              <h3>Outer Pentagon</h3>
+              <p>Foundation, trust, structure, and the 5-pillar ecosystem.</p>
+            </div>
+          </div>
+
+          <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div>
+              <h3>Inner Layers</h3>
+              <p>Support intelligence, education, security, and community knowledge working together.</p>
+            </div>
+          </div>
+
+          <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div>
+              <h3>T5D Core</h3>
+              <p>The Dimension that unifies the platform into one trusted support layer.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-            <h3>🌐 Blockchain</h3>
-            <p>Support across multiple ecosystems.</p>
-        </div>
-        <div class="pillar-card">
-            <h3>🎓 Education</h3>
-            <p>Learning resources for every experience level.</p>
-        </div>
-        <div class="pillar-card">
-            <h3>🤝 Community</h3>
-            <p>Human experts and contributors.</p>
-        </div>
+      </div>
+
+      <div class="framework-map" aria-label="Pentagon framework layout">
+        <div class="map-label top">5upport</div>
+        <div class="map-label ul">Community</div>
+        <div class="map-label ur">Intelligence</div>
+        <div class="map-label ll">Security</div>
+        <div class="map-label lr">Education</div>
+        <div class="mini-pentagon"><span>T<span style="color: var(--ruby);">5</span>D</span></div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="section vision" id="vision">
-    <h2>We are building a unified dimension where people and intelligence converge.</h2>
-    <p>Our mission is to connect individuals and organizations with the intelligence, resources, and support they need to solve challenges, unlock opportunities, and shape the future.</p>
-</section>
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Five Pillars</span>
+        <h2>Support powered by trust, knowledge, and community.</h2>
+      </div>
 
-<section class="section founder" id="founder">
-    <h2 class="section-title">Founder</h2>
-    <div class="founder-card">
-        <h3>Jacob Michael Tarnabine</h3>
-        <h4>Founder & Vision Architect</h4>
-        <p>"The future does not need more barriers. The future needs guidance."</p>
+      <div class="pillars-grid">
+        <article class="pillar-card" id="support-pillar">
+          <a class="pillar-anchor" href="#support-pillar" aria-label="Link to 5upport pillar">#</a>
+          <img class="pillar-icon" src="assets/icons/t5d-icon-support.svg" alt="T5D 5upport icon">
+          <div class="pillar-number">TOP</div>
+          <h3>5upport</h3>
+          <p>The primary mission: guidance, troubleshooting, onboarding, and assistance.</p>
+        </article>
+
+        <article class="pillar-card" id="community-pillar">
+          <a class="pillar-anchor" href="#community-pillar" aria-label="Link to Community pillar">#</a>
+          <img class="pillar-icon" src="assets/icons/t5d-icon-community.svg" alt="T5D Community icon">
+          <div class="pillar-number">UPPER LEFT</div>
+          <h3>Community</h3>
+          <p>Human connection through contributors, specialists, builders, educators, and supporters.</p>
+        </article>
+
+        <article class="pillar-card" id="intelligence-pillar">
+          <a class="pillar-anchor" href="#intelligence-pillar" aria-label="Link to Intelligence pillar">#</a>
+          <img class="pillar-icon" src="assets/icons/t5d-icon-intelligence.svg" alt="T5D Intelligence icon">
+          <div class="pillar-number">UPPER RIGHT</div>
+          <h3>Intelligence</h3>
+          <p>Collective knowledge from intelligent systems, verified support, and human expertise.</p>
+        </article>
+
+        <article class="pillar-card" id="security-pillar">
+          <a class="pillar-anchor" href="#security-pillar" aria-label="Link to Security pillar">#</a>
+          <img class="pillar-icon" src="assets/icons/t5d-icon-security.svg" alt="T5D Security icon">
+          <div class="pillar-number">LOWER LEFT</div>
+          <h3>Security</h3>
+          <p>Protection through awareness, verification, education, and best practices.</p>
+        </article>
+
+        <article class="pillar-card" id="education-pillar">
+          <a class="pillar-anchor" href="#education-pillar" aria-label="Link to Education pillar">#</a>
+          <img class="pillar-icon" src="assets/icons/t5d-icon-education.svg" alt="T5D Education icon">
+          <div class="pillar-number">LOWER RIGHT</div>
+          <h3>Education</h3>
+          <p>Learning pathways that transform beginners into confident participants.</p>
+        </article>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="section roadmap" id="roadmap">
-    <h2 class="section-title">Coming Soon</h2>
-    <ul class="coming-soon">
-        <li>AI-Powered Support</li>
-        <li>Blockchain Guidance</li>
-        <li>Cross-Chain Intelligence</li>
-        <li>Educational Resources</li>
-        <li>T5D Ecosystem</li>
-        <li>Community Hub</li>
-    </ul>
-</section>
+  <section class="section" id="proof">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Proof of Support</span>
+        <h2>Every solved problem strengthens the network.</h2>
+        <p>
+          T5D introduces Proof of Support, a participation model where verified assistance,
+          knowledge contributions, educational content, community support, problem solving,
+          and resolution verification improve the ecosystem over time.
+        </p>
+      </div>
 
-<section class="section contact-section" id="contact">
-    <h2 class="section-title">Get Involved</h2>
-    <div class="contact-container">
-        <p>Join us in building the future of omnichain support.</p>
-        <div class="contact-links">
-            <a href="mailto:contact@tec5uport.com" class="contact-btn">Email Us</a>
-            <a href="#" class="contact-btn">Twitter</a>
-            <a href="#" class="contact-btn">Discord</a>
+      <div class="problem-solution">
+        <div class="panel">
+          <h3>Traditional systems reward activity.</h3>
+          <p>Transactions, liquidity, mining, staking, and isolated platform actions.</p>
         </div>
-    </div>
-</section>
 
-<footer>
-    <h3>TEC5UPORT DIMENSION</h3>
-    <p>One Dimension. One Platform. Infinite Support.</p>
-    <p class="footer-credit">© 2024 TEC5UPORT DIMENSION. All rights reserved.</p>
+        <div class="panel">
+          <h3>T5D rewards support intelligence.</h3>
+          <p>Verified assistance, useful knowledge, clear education, trusted resolution, and real contribution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="docs">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Project Documents</span>
+        <h2>Read the foundation.</h2>
+        <p>Website v2 includes direct links to the whitepaper, roadmap, and brand guide.</p>
+      </div>
+
+      <div class="docs-grid">
+        <div class="doc-card">
+          <h3>Whitepaper v2.0</h3>
+          <p>The foundational document for the Omnichain Intelligent Support Layer, Pentagon Framework, and Proof of Support.</p>
+          <a href="whitepaper.html">Open Whitepaper →</a>
+        </div>
+
+        <div class="doc-card">
+          <h3>Roadmap</h3>
+          <p>The phased execution path from brand foundation to global omnichain intelligence network.</p>
+          <a href="roadmap.html">Open Roadmap →</a>
+        </div>
+
+        <div class="doc-card">
+          <h3>Brand Guide</h3>
+          <p>The new colors, pentagon symbol direction, and logo rules for T5D Website v2.</p>
+          <a href="docs/T5D_BRAND_GUIDE.md">Open Brand Guide →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roadmap-preview">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Roadmap Preview</span>
+        <h2>From concept to trusted infrastructure.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="phase">Phase 1</div>
+          <div>
+            <h3>Foundation</h3>
+            <p>Finalize brand, publish whitepaper, organize GitHub, upgrade Website v2.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="phase">Phase 2</div>
+          <div>
+            <h3>Community & Knowledge</h3>
+            <p>Recruit early specialists, supporters, educators, and builders while creating knowledge resources.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="phase">Phase 3</div>
+          <div>
+            <h3>Support Network</h3>
+            <p>Develop early support workflows, intake categories, and verified resolution systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="roadmap.html">View Full Roadmap</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container cta">
+      <span class="eyebrow">Next Phase</span>
+      <h2>One Platform. Infinite Support.</h2>
+      <p class="lede">
+        Tec5uport Dimension is building a trusted support layer where people can learn,
+        solve problems, contribute knowledge, and navigate emerging technologies together.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="whitepaper.html">Read Whitepaper</a>
+        <a class="btn btn-secondary" href="docs/T5D_WHITEPAPER_V2.md">Download Markdown</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© <span data-year></span> Tec5uport Dimension. All rights reserved.</div>
+    <div>One Platform. Infinite Support.</div>
+  </div>
 </footer>
-
-<script src="Script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
