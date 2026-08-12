@@ -14,6 +14,8 @@ Omnichain Intelligent Support Layer
 
 One Platform. Infinite Support.
 
+> **Current status and scope:** This whitepaper remains foundational. T5D has no deployed token, no active sale, and no funds accepted. Draft utility mechanics and scenario figures are kept separately in the [Token Utility Research](token-utility-research.html) page.
+
 ### Mission Statement
 
 To make advanced technologies accessible through intelligent support, trusted guidance, community expertise, education, and security.

@@ -35,6 +35,8 @@
 
 ## Phase 5 — Ecosystem Utility
 
+**Scope note:** Token utility follows real support activity. Ethereum-first deployment is planned, not live; multichain expansion is later and remains subject to research, testing, and readiness.
+
 - Define the T5D ecosystem utility model
 - Expand Proof of Support rewards
 - Explore governance participation
@@ -42,6 +44,8 @@
 - Prepare future token utility only after real support activity exists
 
 ## Phase 6 — Omnichain Intelligent Support Network
+
+**Chain sequence:** Ethereum first is planned; expansion across other chains comes later.
 
 - Expand across major chains and emerging technologies
 - Grow specialist network globally
