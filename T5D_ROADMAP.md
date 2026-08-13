@@ -1,6 +1,6 @@
 # T5D Roadmap
 
-## Phase 1 — Foundation
+## Phase 1 — Foundation — COMPLETED
 
 - Finalize T5D brand identity
 - Lock the Pentagon Framework
@@ -9,7 +9,7 @@
 - Upgrade website to Website v2
 - Establish official project messaging
 
-## Phase 2 — Community & Knowledge
+## Phase 2 — Community & Knowledge — ACTIVE NOW
 
 - Launch official community channels
 - Recruit early supporters, specialists, educators, and builders

@@ -880,6 +880,7 @@ h2 {
 }
 .status-confirmed { color: #B6F6D0; background: rgba(64, 180, 112, 0.15); border: 1px solid rgba(106, 224, 147, 0.3); }
 .status-proposed { color: var(--cyan); background: rgba(77, 141, 255, 0.14); border: 1px solid rgba(77, 141, 255, 0.32); }
+.status-active { color: var(--cyan); background: rgba(159, 215, 255, 0.12); border: 1px solid rgba(159, 215, 255, 0.34); }
 .status-scenario { color: #FFD9A0; background: rgba(238, 159, 55, 0.14); border: 1px solid rgba(238, 159, 55, 0.34); }
 .status-tba { color: #FFB9C4; background: rgba(226, 27, 60, 0.13); border: 1px solid rgba(226, 27, 60, 0.34); }
 .research-flow { max-width: 960px; }
