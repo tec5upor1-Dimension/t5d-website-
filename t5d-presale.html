@@ -1,10 +1,11 @@
 <!doctype html>
+<!-- STYLE: A calm, evidence-first T5D allocation portal. Dark blue technical surfaces, crisp white type, restrained cyan signals, and clearly bounded inactive controls. The page must make the customer path feel simple while never implying an active sale or payment route. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T5D Presale Information | Tec5uport Dimension</title>
-  <meta name="description" content="Official T5D presale-information page. Current status, intended token identity, allocation reference, contribution-readiness disclosures, and verification guidance.">
+  <title>T5D Community Presale | Tec5uport Dimension</title>
+  <meta name="description" content="T5D community presale preparation. Proposed multichain purchaser flow, fixed-supply direction, allocation reference, and official verification rules.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/t5d-logo-square.svg">
   <link rel="stylesheet" href="styles.css">
@@ -21,122 +22,158 @@
         <a href="whitepaper.html">Whitepaper</a>
         <a href="roadmap.html">Roadmap</a>
         <a href="token-utility-research.html">Utility Research</a>
-        <a href="t5d-presale.html" class="nav-cta" aria-current="page">Presale Info</a>
+        <a href="t5d-presale.html" class="nav-cta" aria-current="page">Presale</a>
       </nav>
       <button class="mobile-toggle" type="button" data-menu-toggle aria-label="Open navigation">Menu</button>
     </div>
   </header>
 
   <main>
-    <section class="page-hero research-hero">
-      <div class="container">
-        <span class="eyebrow">Presale Preparation / Proposed Base Network</span>
-        <h1><span class="gradient-text">T5D Presale Information</span></h1>
-        <p class="hero-copy">The official planning page for the intended T5D identity, published allocation reference, proposed Base direction, and the decisions still required before any presale can be considered.</p>
-        <div class="research-status-banner" role="status" aria-label="Current presale status">
-          <strong>INFORMATION ONLY · NO PARTICIPATION OPEN · NO FUNDS ACCEPTED · NO WALLET OR PAYMENT ADDRESS PUBLISHED</strong>
-          <span>Base Mainnet is the proposed initial network. Any future activation must be announced here with final terms, an official contract address, an exact payment route, and a dated public notice.</span>
+    <section class="presale-hero">
+      <div class="container presale-hero-grid">
+        <div>
+          <span class="eyebrow">Community Presale Preparation</span>
+          <h1><span class="gradient-text">T5D Community Allocation</span></h1>
+          <p class="hero-copy">A simple multichain path for community participation, early access, and future liquidity preparation—built to keep the buyer experience clear while project settlement stays controlled.</p>
+          <div class="presale-status-line" role="status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong>PRE-ACTIVATION</strong>
+            <span>No wallet connection, payment route, price, or contribution window is active.</span>
+          </div>
+          <div class="presale-hero-points">
+            <div><strong>Fixed supply</strong><span>Created once at deployment; no post-deployment minting.</span></div>
+            <div><strong>Proposed network</strong><span>Base is the intended initial T5D network.</span></div>
+            <div><strong>Buyer simplicity</strong><span>Select an asset, see the quote, review one route.</span></div>
+          </div>
         </div>
-        <div class="scope-note research-note"><strong>Planning direction:</strong> Base Mainnet (`eip155:8453`) is proposed as the initial T5D network. This is not a contract announcement, payment instruction, or token launch notice.</div>
-        <div class="download-row">
-          <a class="btn btn-secondary" href="token-utility-research.html">Read Allocation Research</a>
-          <a class="btn btn-secondary" href="future-participation.html">Read Participation Status</a>
-          <a class="btn btn-secondary" href="index.html">Back Home</a>
+
+        <section class="purchase-shell" aria-labelledby="purchase-title">
+          <div class="purchase-shell-topline">
+            <div>
+              <span class="status-tag status-tba">NOT ACTIVE</span>
+              <h2 id="purchase-title">Purchase T5D</h2>
+            </div>
+            <span class="portal-network">MULTICHAIN → BASE</span>
+          </div>
+
+          <div class="portal-stepper" aria-label="Presale purchase flow">
+            <div class="portal-step is-current"><span>1</span><small>Asset</small></div>
+            <div class="portal-step"><span>2</span><small>Quote</small></div>
+            <div class="portal-step"><span>3</span><small>Review</small></div>
+          </div>
+
+          <div class="portal-block">
+            <div class="portal-label-row"><label>Choose a payment asset</label><span>Proposed allowlist</span></div>
+            <div class="asset-grid" aria-label="Proposed payment asset options">
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph eth">Ξ</span><span><strong>ETH</strong><small>Ethereum</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph usdc">$</span><span><strong>USDC</strong><small>Dollar stablecoin</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph usdt">₮</span><span><strong>USDT</strong><small>Dollar stablecoin</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph sol">S</span><span><strong>SOL</strong><small>Solana</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph btc">₿</span><span><strong>BTC</strong><small>Bitcoin</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph bnb">B</span><span><strong>BNB</strong><small>BNB Chain</small></span></button>
+              <button type="button" class="asset-chip" disabled><span class="asset-glyph xrp">X</span><span><strong>XRP</strong><small>XRPL</small></span></button>
+            </div>
+          </div>
+
+          <div class="portal-block portal-amount-row">
+            <div class="portal-label-row"><label for="contribution-amount">Contribution amount</label><span>Quote unavailable</span></div>
+            <div class="amount-field"><input id="contribution-amount" type="text" inputmode="decimal" value="" placeholder="Enter amount when activated" disabled><span>ASSET</span></div>
+          </div>
+
+          <div class="quote-card" aria-live="polite">
+            <div><span>USDC-equivalent quote</span><strong>Pending final terms</strong></div>
+            <div><span>Estimated T5D allocation</span><strong>Pending price</strong></div>
+            <p>Final fixed-price terms, buyer limits, and quote expiry will appear here before any purchase route is enabled.</p>
+          </div>
+
+          <div class="portal-action-stack">
+            <button type="button" class="portal-primary" disabled>Connect wallet when presale opens</button>
+            <p>Wallets, deposit addresses, cross-chain routes, and transactions remain disabled until a dated official activation notice is published here.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="presale-strip" aria-label="Presale purpose">
+      <div class="container presale-strip-grid">
+        <div><span class="eyebrow">Purpose</span><p>Community-driven funding, early access, and liquidity preparation.</p></div>
+        <div><span class="eyebrow">Settlement</span><p>Selected assets are intended to settle through a controlled USDC process before any later allocation decision.</p></div>
+        <div><span class="eyebrow">Control boundary</span><p>Participation does not promise governance rights, returns, listings, or a transfer of project control.</p></div>
+      </div>
+    </section>
+
+    <section class="section research-section" id="how-it-will-work">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Simple Buyer Journey</span>
+          <h2>One clear path for the customer.</h2>
+          <p>The eventual flow will keep network routing, settlement, and treasury operations out of the buyer’s way. The buyer only sees the asset, quote, terms, and a single review step.</p>
+        </div>
+        <div class="buyer-journey-grid">
+          <article class="journey-card"><span>01</span><h3>Select</h3><p>Choose a listed asset and its correct native network.</p></article>
+          <article class="journey-card"><span>02</span><h3>Connect</h3><p>Connect the wallet associated with that network.</p></article>
+          <article class="journey-card"><span>03</span><h3>Quote</h3><p>Enter an amount and review the USDC-equivalent value and fixed T5D allocation.</p></article>
+          <article class="journey-card"><span>04</span><h3>Review</h3><p>Confirm the route, essential acknowledgments, and one transaction.</p></article>
+        </div>
+        <div class="scope-note research-note"><strong>Important:</strong> The flow above is a product design, not an active contribution instruction. No payment route, contract address, wallet address, price, quote, or buyer-data collection is available on this page today.</div>
+      </div>
+    </section>
+
+    <section class="section research-section" id="community-allocation">
+      <div class="container presale-split-layout">
+        <div class="section-header">
+          <span class="eyebrow">Community Allocation Reference</span>
+          <h2>Participation designed to stay community-first.</h2>
+          <p>The current public planning model reserves a proposed 7% community-presale allocation and a separate 5% public-sale / liquidity allocation. These remain planning references; they are not active terms or entitlement.</p>
+          <p>The intended Base token uses a fixed-supply model: the final approved supply is created once at deployment, with no post-deployment minting or supply increase.</p>
+          <a class="btn btn-secondary" href="token-utility-research.html#distribution">Review allocation research</a>
+        </div>
+        <div class="allocation-pulse panel">
+          <div class="allocation-pulse-row"><span>Community presale</span><strong>7%</strong><small>70M against the current proposed 1B reference</small></div>
+          <div class="allocation-meter"><span style="width:7%"></span></div>
+          <div class="allocation-pulse-row"><span>Public sale / liquidity</span><strong>5%</strong><small>50M against the current proposed 1B reference</small></div>
+          <div class="allocation-meter"><span style="width:5%"></span></div>
+          <div class="allocation-footnote">Final pool size, price, buyer limits, vesting, eligibility, custody, and timing are not yet published.</div>
         </div>
       </div>
     </section>
 
-    <section class="section research-section" id="identity">
+    <section class="section research-section" id="activation-gates">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">01 / Intended Identity</span>
-          <h2>T5D is the intended official name and ticker.</h2>
-          <p>T5D is reserved here as the intended official Tec5uport Dimension token identity. An earlier PumpSwap test asset may use the same ticker on a different network; it is a separate experimental asset, is not the intended official T5D token, and is not a presale asset or payment destination.</p>
-        </div>
-        <div class="research-grid research-grid-4">
-          <article class="panel research-panel"><span class="status-tag status-proposed">INTENDED IDENTITY</span><h3>Name</h3><p><strong>T5D</strong></p><p>The intended official token name for this information page.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-proposed">INTENDED TICKER</span><h3>Ticker</h3><p><strong>T5D</strong></p><p>The ticker is not a contract address, network identifier, payment instruction, or proof of authenticity.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-proposed">PROPOSED NETWORK</span><h3>Base Mainnet</h3><p><strong>eip155:8453</strong></p><p>Base is the proposed initial network. It is not yet an official T5D contract announcement.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Official contract</h3><p>No official T5D token contract address has been published on this page.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section research-section" id="allocation-reference">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">02 / Allocation Reference</span>
-          <h2>Published planning percentages are reference material, not live terms.</h2>
-          <p>The figures below repeat the current public planning model. They do not establish a final supply, allocation promise, contribution right, vesting schedule, valuation, or participation eligibility.</p>
-        </div>
-        <div class="table-wrap">
-          <table class="research-table">
-            <thead><tr><th>Reference category</th><th>Published planning share</th><th>Published planning units</th><th>Current status</th></tr></thead>
-            <tbody>
-              <tr><td>Community Presale</td><td>7%</td><td>70,000,000 against a proposed 1B cap</td><td><span class="status-tag status-proposed">PROPOSED / TBA</span></td></tr>
-              <tr><td>Public Sale / Liquidity</td><td>5%</td><td>50,000,000 against a proposed 1B cap</td><td><span class="status-tag status-tba">TBA</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="scope-note research-note"><strong>Reference source:</strong> These figures appear in the current <a href="token-utility-research.html#distribution">Token Utility Research allocation table</a> and remain subject to final review before any activation notice.</div>
-      </div>
-    </section>
-
-    <section class="section research-section" id="base-preparation">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">03 / Base Presale Preparation</span>
-          <h2>Base is the proposed direction. The presale remains unformed and inactive.</h2>
-          <p>The allocation model is already published as planning reference. Before any participation could be considered, the Base contract, exact supply parameters, custody, vesting, terms, eligibility, and reporting approach must be finalized and disclosed.</p>
-        </div>
-        <div class="research-grid research-grid-4">
-          <article class="panel research-panel"><span class="status-tag status-proposed">PROPOSED DIRECTION</span><h3>Base Mainnet</h3><p>Base is the proposed initial T5D network. A Base contract address has not been created or published here.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-tba">TECHNICAL DECISION</span><h3>Token scope</h3><p>A fixed-supply ERC-20 direction is under consideration. Final supply, decimals, features, permissions, and verification remain TBA.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-tba">PRESALE DECISION</span><h3>Contribution terms</h3><p>Price, asset accepted, limits, eligibility, custody, vesting, refunds if applicable, and timing have not been published.</p></article>
-          <article class="panel research-panel"><span class="status-tag status-tba">NOT A PROMISE</span><h3>No guaranteed outcome</h3><p>This page does not promise token availability, liquidity, listing, utility, value, return, timing, or eligibility.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section research-section" id="activation-checklist">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">04 / Before Any Activation</span>
-          <h2>Nothing becomes official by implication.</h2>
-          <p>A contribution route must not be inferred from a social post, a direct message, a ticker, or an older test asset. The following items must be published on this page before anyone is asked to take action.</p>
+          <span class="eyebrow">Before Activation</span>
+          <h2>Nothing is official by implication.</h2>
+          <p>An official route must be published on this page before anyone is asked to connect, sign, send, bridge, or provide purchaser information.</p>
         </div>
         <div class="flow-list research-flow">
-          <div class="flow-item"><div class="flow-num">1</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Base technical identifiers</h3><p>Verified Base Mainnet contract address, final supply and decimals, exact asset accepted, payment route, and independently verifiable transaction instructions.</p></div></div>
-          <div class="flow-item"><div class="flow-num">2</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Final contribution terms</h3><p>Final allocation, supply, vesting, eligibility, limits, refund handling if applicable, and material-risk disclosures.</p></div></div>
-          <div class="flow-item"><div class="flow-num">3</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Custody and reporting</h3><p>Contribution custody, wallet disclosures, access controls, reporting cadence, and material-change procedures.</p></div></div>
-          <div class="flow-item"><div class="flow-num">4</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Dated activation notice</h3><p>A clear public notice that identifies the exact start status and supersedes all older messages, screenshots, or unofficial links.</p></div></div>
+          <div class="flow-item"><div class="flow-num">1</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Verified routes</h3><p>Exact T5D Base contract, listed assets, native networks, custody routes, and independently verifiable transaction instructions.</p></div></div>
+          <div class="flow-item"><div class="flow-num">2</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Contribution terms</h3><p>Fixed price, allocation cap, buyer limits, eligibility, delivery or vesting, and material-risk disclosures.</p></div></div>
+          <div class="flow-item"><div class="flow-num">3</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Settlement policy</h3><p>USDC settlement, custody, conversion controls, reporting cadence, and any later liquidity or treasury decision process.</p></div></div>
+          <div class="flow-item"><div class="flow-num">4</div><div><span class="status-tag status-tba">NOT PUBLISHED</span><h3>Dated activation notice</h3><p>A clear notice on this page that identifies the exact active route and supersedes older messages, screenshots, or unofficial links.</p></div></div>
         </div>
       </div>
     </section>
 
     <section class="section research-section" id="protection">
       <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">05 / Contributor Protection</span>
-          <h2>Verify first. Never send funds based on a ticker alone.</h2>
-          <p>The prior PumpSwap test asset, any unannounced token contract, and any message that asks for funds are not official T5D presale instructions. Only a dated activation notice on this page can establish an official route.</p>
-        </div>
+        <div class="section-header"><span class="eyebrow">Official Source Rule</span><h2>Verify first. Do not use a ticker alone.</h2><p>The earlier PumpSwap test asset, any unannounced contract, and any message that asks for funds are not official T5D presale instructions.</p></div>
         <div class="research-grid research-grid-2">
-          <article class="panel research-panel"><span class="status-tag status-tba">DO NOT ACT YET</span><h3>Current status</h3><ul class="clean-list"><li>No T5D contract address is published here.</li><li>No wallet, payment address, or contribution form is enabled.</li><li>No contribution amount, price, or participation window is published.</li><li>No liquidity venue or token-distribution schedule is published.</li></ul></article>
-          <article class="panel research-panel"><span class="status-tag status-confirmed">OFFICIAL SOURCE RULE</span><h3>How to verify later</h3><p>Use this page and the official project documentation to verify an exact contract address, chain, and dated activation notice. Do not rely on private messages, copied sites, screenshots, ticker matches, or older experimental assets.</p><p><a class="btn btn-secondary" href="index.html#docs">Review official project documents</a></p></article>
+          <article class="panel research-panel"><span class="status-tag status-tba">DO NOT ACT YET</span><h3>Current status</h3><ul class="clean-list"><li>No official T5D contract address is published.</li><li>No wallet connection, payment route, deposit address, quote, or buyer-data form is enabled.</li><li>No contribution amount, fixed price, or participation window is published.</li><li>No asset conversion, liquidity venue, or token-distribution schedule is published.</li></ul></article>
+          <article class="panel research-panel"><span class="status-tag status-confirmed">OFFICIAL VERIFICATION</span><h3>How to verify later</h3><p>Use this page and the official project documentation to verify the exact contract, chain, activation date, listed asset route, and buyer terms. Do not rely on private messages, copied sites, screenshots, ticker matches, or older experimental assets.</p><p><a class="btn btn-secondary" href="index.html#docs">Review official project documents</a></p></article>
         </div>
       </div>
     </section>
 
     <section class="section research-section" id="faq">
       <div class="container">
-          <div class="section-header"><span class="eyebrow">06 / FAQ</span><h2>Current answers, stated plainly.</h2></div>
+        <div class="section-header"><span class="eyebrow">FAQ</span><h2>Current answers, stated plainly.</h2></div>
         <div class="research-grid research-grid-2">
-          <article class="panel research-panel"><h3>Is a T5D presale active?</h3><p><strong>No.</strong> This is an informational page. No participation route, funds acceptance, or wallet connection is active here.</p></article>
-          <article class="panel research-panel"><h3>What is the intended official ticker?</h3><p><strong>T5D.</strong> The intended identity is separate from the earlier PumpSwap test asset that used the same ticker.</p></article>
-          <article class="panel research-panel"><h3>What is the proposed initial network?</h3><p><strong>Base Mainnet.</strong> This is a planning direction only; no official Base contract address has been published.</p></article>
-          <article class="panel research-panel"><h3>What is the official contract address?</h3><p><strong>Not published.</strong> A ticker is not a contract address and must never be used as a payment or trading instruction.</p></article>
-          <article class="panel research-panel"><h3>Are allocation percentages final?</h3><p><strong>No.</strong> The 7% Community Presale and 5% Public Sale / Liquidity figures are current planning references only and remain Proposed / TBA.</p></article>
+          <article class="panel research-panel"><h3>Is the T5D presale active?</h3><p><strong>No.</strong> This page is a pre-activation interface. It does not connect wallets, collect data, accept funds, or generate a payment route.</p></article>
+          <article class="panel research-panel"><h3>Which assets are planned?</h3><p><strong>SOL, ETH, USDC, USDT, BTC, BNB, and XRP</strong> are the requested major-asset set. Exact native routes and verification details remain unpublished.</p></article>
+          <article class="panel research-panel"><h3>Will supply increase later?</h3><p><strong>No.</strong> The intended Base token uses a fixed-supply model created once at deployment, without post-deployment minting.</p></article>
+          <article class="panel research-panel"><h3>What is the intended official ticker?</h3><p><strong>T5D.</strong> The intended identity is separate from older test assets that used the same ticker.</p></article>
+          <article class="panel research-panel"><h3>What is the official contract address?</h3><p><strong>Not published.</strong> A ticker is not a contract address and is never a payment or trading instruction.</p></article>
+          <article class="panel research-panel"><h3>When will terms be available?</h3><p><strong>Not published.</strong> Price, limits, delivery, eligibility, custody, and timing will be stated here in a dated official activation notice before any buyer action.</p></article>
         </div>
       </div>
     </section>
