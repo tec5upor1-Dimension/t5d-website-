@@ -6,6 +6,14 @@
 
 ---
 
+## Agent Integration
+
+T5D Token Support Layer v1 is live for agents that need evidence-aware Base ERC-20 identity support. The API is documented for machine use through its [discovery document](https://api.tec5uportdimension.com/.well-known/t5d-token-support), [OpenAPI contract](https://api.tec5uportdimension.com/openapi.json), and [agent integration guide](AGENT_INTEGRATION.md).
+
+The supported resolver and curated registry each use x402 exact payments on Base Mainnet at the early-access price of **$0.005 USDC**. The service returns identity evidence and direct on-chain observations; it does **not** provide token price predictions, investment recommendations, or safety guarantees. Agents should inspect and cap every `PAYMENT-REQUIRED` challenge before signing a retry.
+
+---
+
 ## Quick Start
 
 ### Local Preview
