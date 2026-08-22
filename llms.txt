@@ -31,3 +31,4 @@ Core early-access pricing is $0.005 USDC per supported endpoint. The API describ
 - Roadmap: https://tec5uportdimension.com/roadmap.html
 - Future participation: https://tec5uportdimension.com/future-participation.html
 - Token-utility research: https://tec5uportdimension.com/token-utility-research.html
+- Presale information: https://tec5uportdimension.com/t5d-presale.html
