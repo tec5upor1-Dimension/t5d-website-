@@ -32,3 +32,5 @@ Core early-access pricing is $0.005 USDC per supported endpoint. The API describ
 - Future participation: https://tec5uportdimension.com/future-participation.html
 - Token-utility research: https://tec5uportdimension.com/token-utility-research.html
 - Presale information: https://tec5uportdimension.com/t5d-presale.html
+
+The presale-information page is a planning resource only. Base Mainnet is the proposed initial network, but no official T5D contract address, token price, wallet, contribution route, payment instruction, or participation window is published.
