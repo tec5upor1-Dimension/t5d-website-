@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tec5uportdimension.com/sitemap.xml
+
