@@ -13,7 +13,7 @@
 
 ## Agent integration summary
 
-T5D Token Support Layer v1 supports Base Mainnet (`eip155:8453`) ERC-20 identity resolution and a curated token registry. Valid paid requests use x402 exact USDC payments on Base Mainnet. Inspect the HTTP 402 `PAYMENT-REQUIRED` challenge first and enforce a payment cap no greater than the exact requested amount.
+T5D Token Support Layer v2 supports Base Mainnet (`eip155:8453`) ERC-20 identity resolution, a versioned trust registry, and deterministic evidence receipts. Valid paid requests use x402 exact USDC payments on Base Mainnet. Inspect the HTTP 402 `PAYMENT-REQUIRED` challenge first and enforce a payment cap no greater than the exact requested amount.
 
 The resolver endpoint is:
 
@@ -23,7 +23,7 @@ The registry endpoint is:
 
 `GET https://api.tec5uportdimension.com/v1/token/registry`
 
-Core early-access pricing is $0.005 USDC per supported endpoint. The API describes direct Base chain observations, evidence state, and freshness; it must not be interpreted as a recommendation, risk assessment, or transaction approval.
+Core early-access pricing is $0.005 USDC per supported endpoint. The API describes direct Base chain observations, evidence state, registry provenance, freshness, and a non-secret evidence receipt; it must not be interpreted as a recommendation, risk assessment, audit, or transaction approval.
 
 ## Human-readable site resources
 
