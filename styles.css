@@ -37,7 +37,7 @@ body {
   background:
     radial-gradient(circle at 20% 12%, rgba(27, 92, 255, 0.22), transparent 32rem),
     radial-gradient(circle at 80% 6%, rgba(226, 27, 60, 0.12), transparent 30rem),
-    linear-gradient(180deg, #05070D 0%, #07101E 42%, #05070D 100%);
+    linear-gradient(180deg, #0A2342 0%, #07101E 42%, #05070D 100%);
   overflow-x: hidden;
 }
 
@@ -74,7 +74,7 @@ img {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(20px);
-  background: rgba(5, 7, 13, 0.76);
+  background: rgba(10, 35, 66, 0.76);
   border-bottom: 1px solid var(--line);
 }
 
