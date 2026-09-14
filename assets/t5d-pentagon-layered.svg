@@ -1,0 +1,101 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">T5D layered pentagon emblem</title>
+<desc id="desc">A dimensional pentagon framework for Tec5uport Dimension with inner layers and five pillar labels.</desc>
+<defs>
+  <radialGradient id="bgGlow" cx="50%" cy="48%" r="56%">
+    <stop offset="0%" stop-color="#244DFF" stop-opacity="0.32"/>
+    <stop offset="45%" stop-color="#0A66FF" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#05070D" stop-opacity="0"/>
+  </radialGradient>
+
+  <linearGradient id="steel" x1="160" y1="120" x2="740" y2="760" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#F1F5F9"/>
+    <stop offset="18%" stop-color="#AAB4C0"/>
+    <stop offset="42%" stop-color="#36414C"/>
+    <stop offset="62%" stop-color="#C9D2DD"/>
+    <stop offset="100%" stop-color="#111820"/>
+  </linearGradient>
+
+  <linearGradient id="blueCore" x1="170" y1="120" x2="740" y2="760" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#6EA8FF"/>
+    <stop offset="42%" stop-color="#1B5CFF"/>
+    <stop offset="100%" stop-color="#071B52"/>
+  </linearGradient>
+
+  <linearGradient id="ruby" x1="290" y1="210" x2="610" y2="690" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FF6A6A"/>
+    <stop offset="50%" stop-color="#E21B3C"/>
+    <stop offset="100%" stop-color="#6B0B1E"/>
+  </linearGradient>
+
+  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="8" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05  0 0 0 0 0.32  0 0 0 0 1  0 0 0 0.55 0"/>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000000" flood-opacity="0.55"/>
+  </filter>
+
+  <clipPath id="clipPentagon">
+    <polygon points="450,70 812,333 674,759 226,759 88,333"/>
+  </clipPath>
+</defs>
+
+<rect width="900" height="900" fill="#05070D"/>
+<circle cx="450" cy="450" r="380" fill="url(#bgGlow)"/>
+
+<!-- subtle circuit traces clipped inside pentagon -->
+<g clip-path="url(#clipPentagon)" opacity="0.55">
+  <path d="M188 369H296V310H382" stroke="#9FD7FF" stroke-opacity="0.24" stroke-width="3"/>
+  <path d="M713 381H602V315H512" stroke="#9FD7FF" stroke-opacity="0.24" stroke-width="3"/>
+  <path d="M252 648H355V594H429" stroke="#9FD7FF" stroke-opacity="0.20" stroke-width="3"/>
+  <path d="M648 651H545V590H472" stroke="#9FD7FF" stroke-opacity="0.20" stroke-width="3"/>
+  <path d="M450 143V254" stroke="#E21B3C" stroke-opacity="0.22" stroke-width="3"/>
+  <path d="M450 657V735" stroke="#E21B3C" stroke-opacity="0.18" stroke-width="3"/>
+  <circle cx="296" cy="310" r="6" fill="#9FD7FF" fill-opacity="0.55"/>
+  <circle cx="602" cy="315" r="6" fill="#9FD7FF" fill-opacity="0.55"/>
+  <circle cx="355" cy="594" r="6" fill="#9FD7FF" fill-opacity="0.45"/>
+  <circle cx="545" cy="590" r="6" fill="#9FD7FF" fill-opacity="0.45"/>
+</g>
+
+<!-- dimensional pentagon layers -->
+<polygon points="450,70 812,333 674,759 226,759 88,333"
+         fill="#0B111A" stroke="url(#steel)" stroke-width="18" filter="url(#shadow)"/>
+
+<polygon points="450,121 758,345 641,707 259,707 142,345"
+         fill="#070B12" stroke="#1D2A38" stroke-width="8"/>
+
+<polygon points="450,166 713,357 613,666 287,666 187,357"
+         fill="#0A1424" stroke="url(#blueCore)" stroke-width="5" filter="url(#softGlow)"/>
+
+<polygon points="450,221 660,374 580,621 320,621 240,374"
+         fill="#09111D" stroke="#7F8A96" stroke-width="3" opacity="0.95"/>
+
+<polygon points="450,285 590,387 537,552 363,552 310,387"
+         fill="#0C1728" stroke="#D7DEE8" stroke-opacity="0.55" stroke-width="2"/>
+
+<!-- internal layer labels -->
+<text x="450" y="364" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#DDE7F5" letter-spacing="5">TEC5UPORT</text>
+<text x="450" y="459" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="900" fill="#EAF2FF" letter-spacing="6">T<tspan fill="url(#ruby)">5</tspan>D</text>
+<text x="450" y="507" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" fill="#9FD7FF" letter-spacing="6">DIMENSION</text>
+<text x="450" y="565" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#B9C5D1" letter-spacing="2">ONE PLATFORM. INFINITE SUPPORT.</text>
+
+<!-- outside pillar labels only, no icons -->
+<g font-family="Inter, Arial, sans-serif" font-weight="800" letter-spacing="2">
+  <text x="450" y="42" text-anchor="middle" font-size="24" fill="#FFFFFF">5UPPORT</text>
+  <text x="108" y="286" text-anchor="middle" font-size="20" fill="#C7D3E0">COMMUNITY</text>
+  <text x="792" y="286" text-anchor="middle" font-size="20" fill="#C7D3E0">INTELLIGENCE</text>
+  <text x="218" y="824" text-anchor="middle" font-size="20" fill="#C7D3E0">SECURITY</text>
+  <text x="682" y="824" text-anchor="middle" font-size="20" fill="#C7D3E0">EDUCATION</text>
+</g>
+
+<!-- small edge accents -->
+<path d="M450 70L520 121" stroke="#E21B3C" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+<path d="M674 759L588 759" stroke="#1B5CFF" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+<path d="M226 759L312 759" stroke="#1B5CFF" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+</svg>
