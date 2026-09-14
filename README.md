@@ -8,13 +8,15 @@ Live at [tec5uportdimension.com](https://tec5uportdimension.com), served via Git
 
 ## Pages
 
-- `index.html` — homepage (Pentagon Framework, Five Pillars, boot animation)
+- `index.html` — homepage (Website v2 design: Pentagon Framework, Five Pillars)
 - `whitepaper.html` — Foundational Whitepaper v2.0
 - `roadmap.html` — six-phase project roadmap
 - `token-utility-research.html` — draft/research-only token utility notes
 - `future-participation.html` — current participation status and scam-safety guidance
 - `t5d-presale.html` — presale preparation page (no active sale yet)
 - `404.html` — not-found redirect
+
+All pages share `styles.css` and `script.js`. There is no other stylesheet or script file — if you ever see a page referencing `style.css` (singular) or `Script.js` (capitalized), that's stale/wrong; fix the reference rather than adding the old file back.
 
 ## Source docs
 
@@ -29,9 +31,16 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+## `main` is the only source of truth
+
+This repo previously accumulated several branches (from Copilot's coding agent and other sessions) that were never merged and never had a PR opened — including one that held the *only* copies of `whitepaper.html`, `roadmap.html`, and this repo's brand docs. Nobody deleted them; they just silently diverged while `main` moved on, and the live site kept working only because Cloudflare's cache was serving old pages that no longer existed in the branch GitHub Pages actually builds. If Cloudflare's cache had been purged, several live pages would have 404'd with no warning.
+
+**Going forward: don't create long-lived content branches for this repo.** Small changes should land on `main` directly (or through a short-lived branch with a PR merged same-day). If you do need a branch for something bigger, open a PR immediately and merge or close it — don't let it sit unmerged.
+
+The one prior homepage design that predated the current one (a boot-animation "INITIALIZING..." loading screen) is preserved at git tag `archive/boot-animation-homepage-v1` for reference. It is not deployed and not linked from anywhere live — check it out only if you specifically need to see what it looked like.
+
 ## Notes for future edits
 
-- `styles.css` is the shared stylesheet for `whitepaper.html`, `roadmap.html`, `token-utility-research.html`, `future-participation.html`, and `t5d-presale.html`. `style.css` (singular) is used only by `index.html`'s boot-animation homepage — they are intentionally separate.
-- Brand assets live under `assets/t5d-brand/`. Use `t5d-shield-transparent-speck-clean.png` for icons/favicons and `t5d-wordmark-transparent.png` for the horizontal footer logo — don't reference `.svg` brand assets, none currently exist in this repo.
+- Brand assets live under `assets/t5d-brand/` (PNG brand marks: shield, wordmark, badge) and `assets/icons/` (SVG pillar icons: support/community/intelligence/security/education) plus `assets/t5d-pentagon-layered.svg` (homepage hero graphic). Use `t5d-brand/t5d-shield-transparent-speck-clean.png` for favicons/brand-mark icons and `t5d-brand/t5d-wordmark-transparent.png` for the horizontal footer logo.
 - The script file is `script.js` (lowercase). GitHub Pages serves from a case-sensitive filesystem, so a mismatched `<script src="Script.js">` reference will 404 in production even though it works fine locally on Windows.
 - Any page-status language ("no token deployed", "no active sale") reflects real project state — don't change it without confirming the actual status first.
