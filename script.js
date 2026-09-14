@@ -28,7 +28,12 @@ function nextMessage() {
 
 window.addEventListener('load', () => {
     nextMessage();
-    
+
+    // Footer year (content pages use <span data-year></span>)
+    document.querySelectorAll('[data-year]').forEach((el) => {
+        el.textContent = new Date().getFullYear();
+    });
+
     // Mobile navigation toggle
     const navToggle = document.getElementById('nav-toggle');
     const siteNav = document.getElementById('site-nav');
