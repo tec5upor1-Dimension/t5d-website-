@@ -12,6 +12,8 @@ let currentIndex = 0;
 const bootText = document.getElementById('boot-text');
 
 function nextMessage() {
+    if (!bootText) return;
+
     if (currentIndex < bootMessages.length) {
         bootText.textContent = bootMessages[currentIndex];
         currentIndex += 1;
@@ -20,7 +22,8 @@ function nextMessage() {
     }
 
     setTimeout(() => {
-        document.getElementById('boot-screen').classList.add('boot-hidden');
+        const bootScreen = document.getElementById('boot-screen');
+        if (bootScreen) bootScreen.classList.add('boot-hidden');
         const hero = document.querySelector('.hero');
         if (hero) hero.classList.add('loaded');
     }, 1200);
@@ -88,6 +91,74 @@ window.addEventListener('load', () => {
     });
 
     revealElements.forEach((el) => observer.observe(el));
+
+    // Agent API Quick Start Sandbox
+    const sandboxFetchBtn = document.getElementById('sandbox-fetch-btn');
+    const sandboxFetchOutput = document.getElementById('sandbox-fetch-output');
+    const sandboxFetchStatus = document.getElementById('sandbox-fetch-status');
+
+    if (sandboxFetchBtn && sandboxFetchOutput) {
+        sandboxFetchBtn.addEventListener('click', async () => {
+            sandboxFetchBtn.disabled = true;
+            if (sandboxFetchStatus) sandboxFetchStatus.textContent = 'Requesting…';
+            sandboxFetchOutput.textContent = '';
+
+            try {
+                const response = await fetch('https://api.tec5uportdimension.com/.well-known/t5d-token-support');
+                const data = await response.json();
+                sandboxFetchOutput.textContent = JSON.stringify(data, null, 2);
+                if (sandboxFetchStatus) sandboxFetchStatus.textContent = `HTTP ${response.status} · live response`;
+            } catch (error) {
+                const detail = error && error.message ? error.message : String(error);
+                sandboxFetchOutput.textContent = `// Request failed. The gateway may be temporarily unavailable.\n// ${detail}`;
+                if (sandboxFetchStatus) sandboxFetchStatus.textContent = 'Request failed';
+            } finally {
+                sandboxFetchBtn.disabled = false;
+            }
+        });
+    }
+
+    const sandboxReceiptOutput = document.getElementById('sandbox-receipt-output');
+    if (sandboxReceiptOutput) {
+        const observedAt = new Date().toISOString();
+        const exampleReceipt = {
+            receiptVersion: '2.0',
+            receiptId: 't5d-er2:eip155:8453/erc20:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913:illustrative',
+            issuedAt: observedAt,
+            assetId: 'eip155:8453/erc20:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
+            observation: {
+                status: 'current',
+                source: 'direct-base-rpc',
+                chainId: 8453,
+                blockNumber: 'illustrative-only',
+                observedAt: observedAt,
+                contractDeployed: true,
+                bytecode: { present: true, byteLength: 'illustrative-only' },
+                metadata: { name: 'USDC', symbol: 'USDC', decimals: 6 },
+                metadataErrors: [],
+                proxy: { standard: 'erc1967', status: 'not-observed', implementation: null, beacon: null, errors: [] },
+                error: null
+            },
+            registry: {
+                version: '2.0',
+                match: true,
+                recordId: 't5d-tr-base-usdc-circle',
+                recordVersion: '2.0',
+                recordStatus: 'active',
+                reviewedAt: '2026-08-22'
+            },
+            integrity: {
+                deterministicInputs: ['receiptVersion', 'assetId', 'observation.blockNumber'],
+                statement: 'receiptId is a deterministic non-secret response reference. It is not a signature, attestation, audit certificate, or cryptographic proof.'
+            },
+            boundaries: {
+                notProvided: ['price', 'liquidity', 'holder concentration', 'risk score', 'investment recommendation', 'transaction suitability', 'legal opinion'],
+                safety: 'An evidence receipt records observations and curated provenance. It does not establish that an asset or contract is safe, appropriate, audited, compliant, liquid, legitimate in every jurisdiction, or suitable for any transaction.'
+            },
+            _illustrative: 'This example was generated in your browser and was not fetched from the paid API.'
+        };
+        sandboxReceiptOutput.textContent = JSON.stringify(exampleReceipt, null, 2);
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
