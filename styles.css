@@ -1162,6 +1162,12 @@ h2 {
 .portal-action-stack { margin-top: 20px; }
 .portal-primary { width: 100%; min-height: 52px; border: 1px solid rgba(159, 215, 255, 0.17); border-radius: 16px; color: #8995a8; background: rgba(77, 141, 255, 0.09); font-weight: 900; }
 .portal-primary:disabled { cursor: not-allowed; }.portal-action-stack p { margin: 10px 0 0; color: var(--muted); text-align: center; font-size: 0.72rem; line-height: 1.5; }
+.portal-or { text-align: center; margin: 10px 0; position: relative; }
+.portal-or span { display: inline-block; padding: 0 10px; background: var(--panel); color: var(--muted); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; position: relative; z-index: 1; }
+.portal-or::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); z-index: 0; }
+.portal-secondary { width: 100%; min-height: 48px; border: 1px solid var(--line); border-radius: 16px; color: var(--silver); background: transparent; font-weight: 800; cursor: pointer; }
+.portal-secondary:not(:disabled):hover { border-color: var(--cyan); color: var(--cyan); }
+.portal-secondary:disabled { cursor: not-allowed; opacity: 0.5; }
 
 .presale-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.024); }
 .presale-strip-grid { display: grid; grid-template-columns: repeat(3, 1fr); }.presale-strip-grid > div { padding: 27px 28px; border-right: 1px solid var(--line); }.presale-strip-grid > div:last-child { border-right: 0; }.presale-strip-grid p { margin: 9px 0 0; color: var(--silver); line-height: 1.55; }

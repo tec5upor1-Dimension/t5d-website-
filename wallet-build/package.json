@@ -13,5 +13,9 @@
   },
   "devDependencies": {
     "vite": "^6.0.0"
+  },
+  "allowScripts": {
+    "@reown/appkit@1.8.24": true,
+    "esbuild@0.25.12": true
   }
 }

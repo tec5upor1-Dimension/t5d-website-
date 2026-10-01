@@ -10,19 +10,22 @@
 // for mainnet values once that deploy lands, and remove the testnet banner
 // in t5d-presale.html at the same time.
 //
-// Wallet support: browser-injected wallets only (MetaMask, Coinbase Wallet
-// extension, Brave Wallet, Rabby, OKX Wallet, etc. — EIP-1193/EIP-6963).
-// WalletConnect / mobile QR pairing is NOT wired up yet: Reown AppKit (the
-// current WalletConnect SDK) does not have a confirmed plain-script-tag/CDN
-// path as of this writing — every documented install method assumes a
-// bundler (Vite/webpack) or a framework CLI. Adding it means either (a)
-// building a small bundle out-of-band and committing the compiled output
-// here, or (b) confirming a real CDN path once that's possible to verify.
-// Tracked in claude/t5d-checklist.md rather than guessed at here.
+// Wallet support, two paths that converge on the same contribute flow:
+//  1. Browser-injected wallets (MetaMask, Coinbase Wallet extension, Brave
+//     Wallet, Rabby, OKX Wallet, etc. — EIP-1193/EIP-6963), via
+//     window.ethereum directly. Zero signup, works the moment the page
+//     loads.
+//  2. WalletConnect / mobile wallets, via Reown AppKit (2026-09-30) — see
+//     wallet-build/src/presale-connect.js, compiled to
+//     presale-connect.bundle.js and loaded as a separate <script> tag
+//     before this one. That bundle exposes window.T5DWalletConnect; this
+//     file only reads that global, so if the bundle is missing or fails to
+//     load for any reason, the injected-wallet path keeps working exactly
+//     as before and the WalletConnect button just stays disabled.
 //
 // Loaded as: <script type="module" src="presale-wallet.js"></script>
 
-import { BrowserProvider, Contract, formatUnits, parseUnits } from 'https://cdn.jsdelivr.net/npm/ethers@6.13.4/+esm';
+import { BrowserProvider, JsonRpcProvider, Contract, formatUnits, parseUnits } from 'https://cdn.jsdelivr.net/npm/ethers@6.13.4/+esm';
 
 // ---------------------------------------------------------------------------
 // CONFIG — testnet rehearsal deployment (see t5d-checklist.md "Current
@@ -71,6 +74,7 @@ const dom = {
   networkTag: document.getElementById('portal-network-tag'),
   walletStatus: document.getElementById('wallet-status'),
   connectBtn: document.getElementById('portal-connect-btn'),
+  walletConnectBtn: document.getElementById('portal-walletconnect-btn'),
   actionNote: document.getElementById('portal-action-note'),
   amountInput: document.getElementById('contribution-amount'),
   unitLabel: document.getElementById('amount-unit-label'),
@@ -82,7 +86,7 @@ const dom = {
   quoteNote: document.getElementById('quote-note'),
 };
 
-if (dom.connectBtn) {
+if (dom.connectBtn || dom.walletConnectBtn) {
   init();
 }
 
@@ -97,31 +101,49 @@ let usdcWrite = null;
 let snapshot = null; // last-read contract state (read-only, works pre-connect)
 let selectedAsset = null;
 let submitting = false;
+let connectionSource = null; // 'injected' | 'walletconnect' — which path is live, for network-switch routing
+let wcUnsubscribe = null;
 
 function init() {
-  if (!window.ethereum) {
-    setStatus('No browser wallet detected. Install MetaMask, Coinbase Wallet, or another injected wallet to continue.', 'warning');
-    dom.connectBtn.textContent = 'No wallet found';
+  const hasInjected = Boolean(window.ethereum);
+  const hasWalletConnect = Boolean(window.T5DWalletConnect);
+
+  if (!hasInjected && !hasWalletConnect) {
+    setStatus('No wallet connection method is available right now. Install MetaMask, Coinbase Wallet, or another browser wallet, or reload the page and try again.', 'warning');
+    if (dom.connectBtn) { dom.connectBtn.textContent = 'No wallet found'; dom.connectBtn.disabled = true; }
+    if (dom.walletConnectBtn) { dom.walletConnectBtn.disabled = true; }
     refreshPresaleSnapshot(true);
     return;
   }
 
-  provider = new BrowserProvider(window.ethereum);
+  if (hasInjected && dom.connectBtn) {
+    dom.connectBtn.disabled = false;
+    dom.connectBtn.textContent = 'Connect Wallet';
+    dom.connectBtn.onclick = onConnectClick;
+    window.ethereum.on?.('accountsChanged', () => window.location.reload());
+    window.ethereum.on?.('chainChanged', () => window.location.reload());
+  } else if (dom.connectBtn) {
+    dom.connectBtn.disabled = true;
+    dom.connectBtn.textContent = 'No browser wallet found';
+  }
 
-  dom.connectBtn.disabled = false;
-  dom.connectBtn.textContent = 'Connect Wallet';
-  dom.connectBtn.onclick = onConnectClick;
-
-  window.ethereum.on?.('accountsChanged', () => window.location.reload());
-  window.ethereum.on?.('chainChanged', () => window.location.reload());
+  if (hasWalletConnect && dom.walletConnectBtn) {
+    dom.walletConnectBtn.disabled = false;
+    dom.walletConnectBtn.onclick = onWalletConnectClick;
+  } else if (dom.walletConnectBtn) {
+    dom.walletConnectBtn.disabled = true;
+    dom.walletConnectBtn.title = 'WalletConnect is unavailable right now — try a browser wallet instead.';
+  }
 
   dom.usdcChip?.addEventListener('click', () => selectAsset('usdc'));
   dom.amountInput?.addEventListener('input', updateQuote);
 
-  // Reconnect silently if the site is already authorized — no popup.
-  window.ethereum.request({ method: 'eth_accounts' })
-    .then((accounts) => { if (accounts && accounts.length > 0) connectWallet(); })
-    .catch(() => {});
+  if (hasInjected) {
+    // Reconnect silently if the site is already authorized — no popup.
+    window.ethereum.request({ method: 'eth_accounts' })
+      .then((accounts) => { if (accounts && accounts.length > 0) connectWallet(window.ethereum, 'injected'); })
+      .catch(() => {});
+  }
 
   refreshPresaleSnapshot(true);
 }
@@ -132,7 +154,7 @@ async function onConnectClick() {
     dom.connectBtn.disabled = true;
     dom.connectBtn.textContent = 'Connecting…';
     await window.ethereum.request({ method: 'eth_requestAccounts' });
-    await connectWallet();
+    await connectWallet(window.ethereum, 'injected');
   } catch (err) {
     setStatus(friendlyError(err), 'warning');
     dom.connectBtn.disabled = false;
@@ -140,7 +162,31 @@ async function onConnectClick() {
   }
 }
 
-async function connectWallet() {
+async function onWalletConnectClick() {
+  if (userAddress || !window.T5DWalletConnect) return;
+  try {
+    dom.walletConnectBtn.disabled = true;
+    dom.walletConnectBtn.textContent = 'Connecting…';
+    await window.T5DWalletConnect.open();
+    wcUnsubscribe?.();
+    wcUnsubscribe = window.T5DWalletConnect.subscribe(async (state) => {
+      if (state.isConnected && state.address && !userAddress) {
+        wcUnsubscribe?.();
+        wcUnsubscribe = null;
+        const rawProvider = window.T5DWalletConnect.getProvider();
+        await connectWallet(rawProvider, 'walletconnect');
+      }
+    });
+  } catch (err) {
+    setStatus(friendlyError(err), 'warning');
+    dom.walletConnectBtn.disabled = false;
+    dom.walletConnectBtn.textContent = 'Connect via WalletConnect';
+  }
+}
+
+async function connectWallet(rawProvider, source) {
+  connectionSource = source;
+  provider = new BrowserProvider(rawProvider);
   signer = await provider.getSigner();
   userAddress = await signer.getAddress();
 
@@ -149,8 +195,18 @@ async function connectWallet() {
     dom.connectBtn.disabled = false;
     dom.connectBtn.textContent = `Switch to ${NETWORK.chainName}`;
     dom.connectBtn.onclick = onSwitchNetworkClick;
+    if (dom.walletConnectBtn && source === 'injected') {
+      // Leave the WalletConnect button available as an alternative path.
+      dom.walletConnectBtn.disabled = false;
+      dom.walletConnectBtn.textContent = 'Connect via WalletConnect';
+    }
     setStatus(`Connected as ${short(userAddress)} — wrong network. Switch to ${NETWORK.chainName} to continue (this rehearsal only runs there).`, 'warning');
     return;
+  }
+
+  if (dom.walletConnectBtn) {
+    dom.walletConnectBtn.disabled = true;
+    dom.walletConnectBtn.textContent = source === 'walletconnect' ? 'Connected' : 'Connect via WalletConnect';
   }
 
   presaleWrite = new Contract(PRESALE_ADDRESS, PRESALE_ABI, signer);
@@ -163,6 +219,20 @@ async function connectWallet() {
 async function onSwitchNetworkClick() {
   dom.connectBtn.disabled = true;
   dom.connectBtn.textContent = 'Switching…';
+
+  if (connectionSource === 'walletconnect') {
+    try {
+      await window.T5DWalletConnect.switchNetwork();
+      const rawProvider = window.T5DWalletConnect.getProvider();
+      await connectWallet(rawProvider, 'walletconnect');
+    } catch (err) {
+      setStatus(friendlyError(err), 'warning');
+      dom.connectBtn.disabled = false;
+      dom.connectBtn.textContent = `Switch to ${NETWORK.chainName}`;
+    }
+    return;
+  }
+
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
@@ -209,7 +279,7 @@ function selectAsset(asset) {
 
 async function refreshPresaleSnapshot(isInitial) {
   try {
-    const readProvider = provider ?? new BrowserProvider(window.ethereum);
+    const readProvider = provider ?? (window.ethereum ? new BrowserProvider(window.ethereum) : new JsonRpcProvider(NETWORK.rpcUrls[0]));
     const presale = new Contract(PRESALE_ADDRESS, PRESALE_ABI, readProvider);
     const [price, softCap, perWalletCap, start, end, finalized, softCapMet, supply, sold, raised] = await Promise.all([
       presale.pricePerTokenUsdc(),
