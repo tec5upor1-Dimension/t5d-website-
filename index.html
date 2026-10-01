@@ -26,6 +26,7 @@
       <a href="whitepaper.html">Whitepaper</a>
       <a href="roadmap.html">Roadmap</a>
       <a href="token-utility-research.html">Utility Research</a>
+      <a href="index.html#sandbox">Agent API</a>
       <a href="t5d-presale.html">Presale</a>
       <a href="donate.html">Donate</a>
       <a href="index.html#docs" class="nav-cta">Project Docs</a>
@@ -260,6 +261,60 @@
           <p>Verified assistance, useful knowledge, clear education, trusted resolution, and real contribution.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="sandbox">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Agent-Ready API</span>
+        <h2>Quick Start Sandbox — try the x402 Support Layer.</h2>
+        <p>
+          T5D runs a live x402 payment-gated API for AI agents on Base Mainnet. Discovery is
+          free and needs no wallet. Paid identity-resolution routes settle in USDC directly
+          through the x402 protocol at
+          <code class="sandbox-endpoint sandbox-endpoint-inline">api.tec5uportdimension.com</code>.
+        </p>
+      </div>
+
+      <div class="sandbox-grid">
+        <div class="panel sandbox-panel">
+          <span class="status-tag status-active">FREE · NO WALLET</span>
+          <h3>1. Free discovery endpoint</h3>
+          <p>Calls the live gateway and shows its current capabilities and pricing document.</p>
+          <code class="sandbox-endpoint">GET /.well-known/t5d-token-support</code>
+          <div class="sandbox-actions">
+            <button class="btn btn-primary" type="button" id="sandbox-fetch-btn">Fetch Live Discovery Document</button>
+            <span class="sandbox-status" id="sandbox-fetch-status" aria-live="polite"></span>
+          </div>
+          <div class="code-panel">
+            <pre><code id="sandbox-fetch-output">// Click "Fetch Live Discovery Document" to call the gateway.</code></pre>
+          </div>
+        </div>
+
+        <div class="panel sandbox-panel">
+          <span class="status-tag status-paid">PAID · $0.005 USDC</span>
+          <h3>2. Illustrative Evidence Receipt v2</h3>
+          <p>
+            A static example of the shape returned by a <strong>paid</strong> resolve call.
+            It is generated in your browser right now — not fetched, and not a live
+            on-chain observation.
+          </p>
+          <code class="sandbox-endpoint">GET /v1/token/resolve?network=eip155:8453&amp;address=0x8335…</code>
+          <div class="code-panel">
+            <pre><code id="sandbox-receipt-output">Loading example…</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="sandbox-note">
+        Full reference: <a href="https://api.tec5uportdimension.com/openapi.json">openapi.json</a> ·
+        <a href="https://api.tec5uportdimension.com/llms.txt">llms.txt</a> ·
+        <a href="https://api.tec5uportdimension.com/health">health</a>.
+        Agents should read the x402 payment challenge and never pay more than the exact
+        requested amount. This API provides identity evidence and direct chain observation —
+        not price feeds, risk scores, or investment advice.
+      </p>
     </div>
   </section>
 
