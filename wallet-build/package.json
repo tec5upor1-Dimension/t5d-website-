@@ -1,0 +1,17 @@
+{
+  "name": "t5d-presale-wallet-build",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Build-time only. Compiles presale-connect.js into a single browser bundle committed to the static site (t5d-website-/presale-connect.bundle.js). Not part of the deployed site itself.",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@reown/appkit": "^1.8.24",
+    "@reown/appkit-adapter-ethers": "^1.8.24",
+    "ethers": "^6.13.4"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

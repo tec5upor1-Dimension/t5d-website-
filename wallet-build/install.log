@@ -1,0 +1,12 @@
+npm verbose cli /usr/bin/node /usr/bin/npm
+npm info using npm@10.9.8
+npm info using node@v22.23.2
+npm verbose title npm install
+npm verbose argv "install" "--fetch-timeout" "20000" "--fetch-retries" "1" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/sessions/rcw-01u72p23yx95xv6dggqjqqer/.npm/_logs/2026-09-30T13_34_24_339Z-
+npm verbose logfile /sessions/rcw-01u72p23yx95xv6dggqjqqer/.npm/_logs/2026-09-30T13_34_24_339Z-debug-0.log
+npm http cache https://registry.npmjs.org/@reown%2fappkit 6786ms (cache hit)
+npm http cache https://registry.npmjs.org/@reown%2fappkit-adapter-ethers 3051ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@ethersproject%2fsha2 11491ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/ethers 567ms (cache revalidated)
+npm http fetch GET 200 https://registry.npmjs.org/vite 10916ms (cache revalidated)

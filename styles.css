@@ -1044,6 +1044,8 @@ h2 {
 }
 
 .asset-chip:disabled { cursor: not-allowed; }
+.asset-chip:not(:disabled) { opacity: 1; cursor: pointer; }
+.asset-chip.is-selected { border-color: var(--cyan); background: rgba(159, 215, 255, 0.12); }
 .asset-chip strong, .asset-chip small { display: block; }
 .asset-chip strong { color: var(--silver); font-size: 0.78rem; }
 .asset-chip small { margin-top: 2px; font-size: 0.62rem; color: var(--muted); }
@@ -1309,4 +1311,34 @@ h2 {
   .official-brand-shield { width: 74px; height: 74px; }
   .brand-icon-board-wrap { padding: 0; border-radius: 0; }
   .presale-official-lockup img { width: 100%; height: 62px; }
+}
+
+/* STYLE: Live wallet-connect status for the presale purchase shell — added
+   2026-09-30 alongside presale-wallet.js. Reuses existing tokens; the
+   testnet-rehearsal banner and connected/warning states use the same
+   ruby/green accent language as .status-tag elsewhere on the page. */
+.wallet-network-banner { margin: 0 0 16px; padding: 10px 16px; border: 1px solid rgba(238, 159, 55, 0.35); border-radius: 12px; background: rgba(238, 159, 55, 0.10); color: #FFD9A0; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; text-align: center; }
+.wallet-status { margin: 0 0 18px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); color: var(--silver); font-size: 0.8rem; line-height: 1.5; }
+.wallet-status.is-ok { border-color: rgba(64, 180, 112, 0.35); background: rgba(64, 180, 112, 0.08); color: #B6F6D0; }
+.wallet-status.is-warning { border-color: rgba(226, 27, 60, 0.35); background: rgba(226, 27, 60, 0.08); color: #FFB9C4; }
+
+/* STYLE: Direct donation page — one receiving address shared across any
+   EVM network, kept visually and legally separate from the presale (no
+   tokens or entitlement implied). Added 2026-09-30. */
+.donate-shell { padding: clamp(22px, 3vw, 34px); }
+.donate-grid { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+.address-box { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 16px; background: rgba(5, 7, 13, 0.55); }
+.address-box code { flex: 1; min-width: 0; overflow-wrap: anywhere; color: var(--white); font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.92rem; letter-spacing: 0.01em; }
+.copy-address-btn { flex: 0 0 auto; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(159, 215, 255, 0.28); background: rgba(27, 92, 255, 0.14); color: var(--white); font-weight: 800; font-size: 0.78rem; cursor: pointer; }
+.copy-address-btn:hover { background: rgba(27, 92, 255, 0.22); }
+.copy-address-btn.is-copied { background: rgba(64, 180, 112, 0.22); border-color: rgba(106, 224, 147, 0.4); }
+.qr-frame { display: grid; place-items: center; width: 172px; height: 172px; padding: 12px; border-radius: 18px; background: #FFFFFF; box-shadow: var(--shadow); }
+.network-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
+.network-chip { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.028); color: var(--silver); font-size: 0.76rem; font-weight: 700; text-align: center; }
+.donate-warning { margin-top: 16px; padding: 12px 16px; border: 1px solid rgba(226, 27, 60, 0.35); border-radius: 12px; background: rgba(226, 27, 60, 0.08); color: #FFB9C4; font-size: 0.78rem; line-height: 1.55; }
+
+@media (max-width: 760px) {
+  .donate-grid { grid-template-columns: 1fr; }
+  .qr-frame { margin: 0 auto; }
+  .network-grid { grid-template-columns: repeat(2, 1fr); }
 }
