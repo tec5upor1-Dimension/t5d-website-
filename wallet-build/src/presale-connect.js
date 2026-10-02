@@ -28,8 +28,8 @@ const ACTIVE_NETWORK = baseSepolia;
 const PROJECT_ID = '9e48128b0e2ce86b827effbce4c92b55';
 
 const METADATA = {
-  name: 'Tec5uport Dimension Presale',
-  description: 'T5D community presale — connect a wallet to contribute.',
+  name: 'T5D Community Funding',
+  description: 'T5D Community Funding — connect a wallet to contribute.',
   url: 'https://tec5uportdimension.com',
   icons: ['https://tec5uportdimension.com/assets/t5d-brand/t5d-shield-transparent-speck-clean.png'],
 };

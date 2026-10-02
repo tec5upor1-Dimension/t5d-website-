@@ -310,14 +310,14 @@ function renderPublicSnapshot() {
   let windowState;
   if (snapshot.finalized) {
     windowState = snapshot.softCapMet
-      ? 'This rehearsal presale is finalized — its funding goal was met.'
-      : 'This rehearsal presale is finalized — its funding goal was not met; contributors can refund.';
+      ? 'This Community Funding rehearsal is finalized — its funding goal was met.'
+      : 'This Community Funding rehearsal is finalized — its funding goal was not met; contributors can refund.';
   } else if (now < snapshot.start) {
-    windowState = 'This rehearsal presale has not opened yet.';
+    windowState = 'This Community Funding rehearsal has not opened yet.';
   } else if (now >= snapshot.end) {
-    windowState = 'This rehearsal presale’s window has closed (awaiting finalize()).';
+    windowState = 'This Community Funding rehearsal’s window has closed (awaiting finalize()).';
   } else {
-    windowState = 'This rehearsal presale is open for contributions.';
+    windowState = 'This Community Funding rehearsal is open for contributions.';
   }
   const raisedStr = Number(formatUnits(snapshot.raised, USDC_DECIMALS)).toLocaleString();
   const softCapStr = Number(formatUnits(snapshot.softCap, USDC_DECIMALS)).toLocaleString();
@@ -469,9 +469,9 @@ function friendlyError(err) {
   if (/user rejected/i.test(raw)) return 'Request cancelled in your wallet.';
   if (/not started/i.test(raw)) return 'The contribution window has not opened yet.';
   if (/window closed/i.test(raw)) return 'The contribution window has closed.';
-  if (/already finalized/i.test(raw)) return 'This rehearsal presale has already been finalized.';
+  if (/already finalized/i.test(raw)) return 'This Community Funding rehearsal has already been finalized.';
   if (/exceeds per-wallet cap/i.test(raw)) return 'That would exceed the per-wallet cap.';
-  if (/exceeds presale supply/i.test(raw)) return 'That would exceed the remaining presale supply.';
+  if (/exceeds presale supply/i.test(raw)) return 'That would exceed the remaining Community Funding supply.';
   if (/insufficient funds/i.test(raw)) return 'Insufficient ETH for gas.';
   if (/4902/.test(raw)) return `Add ${NETWORK.chainName} to your wallet and try again.`;
   return raw.length > 160 ? 'Something went wrong completing that action.' : raw;

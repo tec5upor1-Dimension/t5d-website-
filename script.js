@@ -5,7 +5,7 @@ const bootMessages = [
     'ESTABLISHING SUPPORT LAYER...',
     'SYNCHRONIZING COMMUNITY...',
     'ACTIVATING INTELLIGENCE NETWORK...',
-    'WELCOME TO TEC5UPORT DIMENSION'
+    'WELCOME TO T5D'
 ];
 
 let currentIndex = 0;
