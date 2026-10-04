@@ -94,6 +94,21 @@
     </div>
   </section>
 
+  <section class="section research-section" id="donate-goes-towards">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Where It Goes</span>
+        <h2>What support goes towards.</h2>
+      </div>
+      <div class="flow-list research-flow">
+        <div class="flow-item"><div class="flow-num">1</div><div><h3>Product &amp; development</h3><p>Engineering, testing, and ongoing development of the T5D platform.</p></div></div>
+        <div class="flow-item"><div class="flow-num">2</div><div><h3>Cloud &amp; infrastructure</h3><p>Hosting, data, APIs, and the operating infrastructure T5D runs on.</p></div></div>
+        <div class="flow-item"><div class="flow-num">3</div><div><h3>Growth &amp; security</h3><p>Community growth, partnerships, and security and monitoring work.</p></div></div>
+      </div>
+      <p class="table-footnote">Support is not a purchase. It does not buy a token, an allocation, equity, or any claim on T5D.</p>
+    </div>
+  </section>
+
   <section class="section research-section" id="donate-disclosure">
     <div class="container">
       <div class="section-header"><span class="eyebrow">Please Read Before Sending</span><h2>Voluntary, irreversible, no entitlement.</h2></div>
@@ -114,6 +129,57 @@
             <li>Only send assets and networks you recognize from the list above.</li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section research-section" id="donate-note">
+    <div class="container">
+      <div class="panel">
+        <div class="section-header" style="margin-bottom:18px;">
+          <span class="eyebrow">Optional</span>
+          <h2>Tell us it was you.</h2>
+          <p>A transfer on the blockchain doesn't carry your name or account. If you'd like us to know it was you, leave your details below — every field here is optional, including whether you send this at all.</p>
+        </div>
+        <form class="donate-note-form" id="donate-note-form" action="https://t5d-donate-log.tec5upor1.workers.dev/submit" method="POST">
+          <div class="donate-note-row cols-2">
+            <div class="donate-note-field">
+              <label for="note-name">Name or handle</label>
+              <input type="text" id="note-name" name="name" placeholder="How you'd like to be referred to" autocomplete="name">
+            </div>
+            <div class="donate-note-field">
+              <label for="note-email">Email</label>
+              <input type="email" id="note-email" name="email" placeholder="So we can reply and say thanks" autocomplete="email">
+              <small>Never added to a mailing list.</small>
+            </div>
+          </div>
+          <div class="donate-note-row cols-2">
+            <div class="donate-note-field">
+              <label for="note-amount">Asset &amp; amount</label>
+              <input type="text" id="note-amount" name="asset_amount" placeholder="e.g. 0.05 ETH, 100 USDC">
+            </div>
+            <div class="donate-note-field">
+              <label for="note-network">Network</label>
+              <input type="text" id="note-network" name="network" placeholder="e.g. Base, Ethereum, Polygon">
+            </div>
+          </div>
+          <div class="donate-note-field">
+            <label for="note-txhash">Transaction hash</label>
+            <input type="text" id="note-txhash" name="tx_hash" placeholder="0x… — helps us confirm the transfer">
+          </div>
+          <div class="donate-note-field">
+            <label for="note-message">Note</label>
+            <textarea id="note-message" name="note" placeholder="Anything you'd like to say — feedback, a request, or nothing at all."></textarea>
+          </div>
+          <div class="donate-note-consent">
+            <input type="checkbox" id="note-consent" name="consent" required>
+            <label for="note-consent">I understand this is a voluntary donation, that it's non-refundable, and that it doesn't entitle me to any product, token, equity, or return.</label>
+          </div>
+          <div class="donate-note-actions">
+            <button type="submit" class="btn btn-primary" id="donate-note-submit">Send</button>
+            <span class="donate-note-status" id="donate-note-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
       </div>
     </div>
   </section>

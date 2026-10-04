@@ -1447,3 +1447,39 @@ h2 {
   .qr-frame { margin: 0 auto; }
   .network-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* STYLE: Optional "Tell us it was you" donor-note form on donate.html —
+   added 2026-10-02. Same dark panel/input language as the rest of the site. */
+.donate-note-form { display: grid; gap: 16px; margin-top: 4px; }
+.donate-note-row { display: grid; gap: 16px; }
+.donate-note-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.donate-note-field label { display: block; font-size: 0.78rem; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+.donate-note-field small { display: block; color: var(--muted); font-size: 0.74rem; margin-top: 4px; }
+.donate-note-field input[type="text"],
+.donate-note-field input[type="email"],
+.donate-note-field textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(5, 7, 13, 0.55);
+  color: var(--white);
+  font: inherit;
+  outline: 0;
+}
+.donate-note-field input::placeholder,
+.donate-note-field textarea::placeholder { color: #748094; }
+.donate-note-field input:focus,
+.donate-note-field textarea:focus { border-color: rgba(159, 215, 255, 0.4); }
+.donate-note-field textarea { min-height: 96px; resize: vertical; }
+.donate-note-consent { display: flex; gap: 10px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.02); }
+.donate-note-consent input { margin-top: 3px; flex: 0 0 auto; }
+.donate-note-consent label { color: var(--silver); font-size: 0.82rem; line-height: 1.5; }
+.donate-note-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.donate-note-status { font-size: 0.82rem; font-weight: 700; }
+.donate-note-status.is-success { color: #8FE3B0; }
+.donate-note-status.is-error { color: #FFB9C4; }
+
+@media (max-width: 760px) {
+  .donate-note-row.cols-2 { grid-template-columns: 1fr; }
+}

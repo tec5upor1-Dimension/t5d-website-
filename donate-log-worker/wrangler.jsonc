@@ -1,0 +1,12 @@
+{
+	"name": "t5d-donate-log",
+	"main": "worker.js",
+	"compatibility_date": "2026-10-02",
+	"kv_namespaces": [
+		{
+			"binding": "DONATE_LOG",
+			"id": "bbf5cd6077aa4cf1b4e6d805e1807b3e",
+			"remote": true
+		}
+	]
+}
