@@ -58,6 +58,8 @@ const PRESALE_ABI = [
   'function endTime() view returns (uint256)',
   'function finalized() view returns (bool)',
   'function softCapMet() view returns (bool)',
+  'function softCapFailed() view returns (bool)',
+  'function refund() external',
 ];
 
 const ERC20_ABI = [
@@ -84,6 +86,9 @@ const dom = {
   quoteUsdcValue: document.getElementById('quote-usdc-value'),
   quoteT5dValue: document.getElementById('quote-t5d-value'),
   quoteNote: document.getElementById('quote-note'),
+  refundPanel: document.getElementById('portal-refund-panel'),
+  refundBtn: document.getElementById('portal-refund-btn'),
+  refundNote: document.getElementById('portal-refund-note'),
 };
 
 if (dom.connectBtn || dom.walletConnectBtn) {
@@ -281,6 +286,9 @@ async function refreshPresaleSnapshot(isInitial) {
   try {
     const readProvider = provider ?? (window.ethereum ? new BrowserProvider(window.ethereum) : new JsonRpcProvider(NETWORK.rpcUrls[0]));
     const presale = new Contract(PRESALE_ADDRESS, PRESALE_ABI, readProvider);
+    // softCapFailed() only exists on the newer contract (90-day goal deadline);
+    // older deployments fall back to "finalized without meeting the goal".
+    const softCapFailedRead = presale.softCapFailed().catch(() => null);
     const [price, softCap, perWalletCap, start, end, finalized, softCapMet, supply, sold, raised] = await Promise.all([
       presale.pricePerTokenUsdc(),
       presale.softCapUsdc(),
@@ -293,9 +301,11 @@ async function refreshPresaleSnapshot(isInitial) {
       presale.totalTokensSold(),
       presale.totalUsdcRaised(),
     ]);
+    const softCapFailed = await softCapFailedRead;
+    const refundOpen = softCapFailed === null ? (finalized && !softCapMet) : Boolean(softCapFailed);
     snapshot = {
       price, softCap, perWalletCap, supply, sold, raised,
-      start: Number(start), end: Number(end), finalized, softCapMet,
+      start: Number(start), end: Number(end), finalized, softCapMet, refundOpen,
     };
     if (isInitial && !userAddress) renderPublicSnapshot();
   } catch (err) {
@@ -340,6 +350,17 @@ async function refreshAccountState() {
     if (contribution.usdcContributed > 0n) {
       const already = Number(formatUnits(contribution.tokensOwed, T5D_DECIMALS)).toLocaleString(undefined, { maximumFractionDigits: 2 });
       msg += ` You're already in for ${already} T5D (rehearsal-scale).`;
+    }
+
+    // Refund button: only for wallets that contributed, only once refunds are open.
+    const canRefund = snapshot.refundOpen && contribution.usdcContributed > 0n && !contribution.refunded;
+    if (dom.refundPanel) dom.refundPanel.hidden = !canRefund;
+    if (canRefund && dom.refundBtn) {
+      const refundStr = Number(formatUnits(contribution.usdcContributed, USDC_DECIMALS)).toLocaleString(undefined, { maximumFractionDigits: 2 });
+      dom.refundBtn.textContent = `Withdraw my $${refundStr} USDC`;
+      dom.refundBtn.disabled = false;
+      dom.refundBtn.onclick = onRefundClick;
+      if (dom.refundNote) dom.refundNote.textContent = 'The funding goal wasn’t reached in time, so your full contribution is available to withdraw.';
     }
 
     if (dom.statusTag) dom.statusTag.textContent = windowOpen ? 'REHEARSAL LIVE' : 'REHEARSAL — WINDOW CLOSED';
@@ -449,6 +470,29 @@ async function onContributeClick() {
   }
 }
 
+async function onRefundClick() {
+  if (submitting || !presaleWrite) return;
+  submitting = true;
+  dom.refundBtn.disabled = true;
+  try {
+    dom.refundBtn.textContent = 'Confirm in your wallet…';
+    setStatus('Withdrawal submitted — confirm it in your wallet, then wait for it to mine.', null);
+    const tx = await presaleWrite.refund();
+    dom.refundBtn.textContent = 'Withdrawing…';
+    await tx.wait();
+    setStatus('Done — your USDC has been returned to your wallet.', 'ok');
+    dom.refundBtn.textContent = 'Withdrawn';
+    await refreshPresaleSnapshot(false);
+    await refreshAccountState();
+  } catch (err) {
+    setStatus(friendlyError(err), 'warning');
+    dom.refundBtn.textContent = 'Withdraw my USDC';
+    dom.refundBtn.disabled = false;
+  } finally {
+    submitting = false;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -470,6 +514,8 @@ function friendlyError(err) {
   if (/not started/i.test(raw)) return 'The contribution window has not opened yet.';
   if (/window closed/i.test(raw)) return 'The contribution window has closed.';
   if (/already finalized/i.test(raw)) return 'This Community Funding rehearsal has already been finalized.';
+  if (/soft cap met|no refund/i.test(raw)) return 'Withdrawals aren’t open — the funding goal was reached.';
+  if (/nothing to refund|already refunded/i.test(raw)) return 'There’s nothing left to withdraw for this wallet.';
   if (/exceeds per-wallet cap/i.test(raw)) return 'That would exceed the per-wallet cap.';
   if (/exceeds presale supply/i.test(raw)) return 'That would exceed the remaining Community Funding supply.';
   if (/insufficient funds/i.test(raw)) return 'Insufficient ETH for gas.';
