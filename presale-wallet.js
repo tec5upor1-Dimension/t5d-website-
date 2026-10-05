@@ -2,8 +2,8 @@
 // Wires the T5D community presale purchase shell to a real wallet and the
 // currently deployed T5DPresale contract.
 //
-// IMPORTANT — TESTNET REHEARSAL ONLY (2026-09-30): NETWORK/PRESALE_ADDRESS
-// below point at the Base Sepolia rehearsal deployment, not Base mainnet.
+// IMPORTANT — TESTNET PREVIEW ONLY (2026-09-30): NETWORK/PRESALE_ADDRESS
+// below point at the Base Sepolia preview deployment, not Base mainnet.
 // T5D has not deployed to mainnet yet (see claude/t5d-checklist.md — Safe
 // signer threshold, final timestamps, Team/Strategic list, audit, and the
 // mainnet deploy itself are all still open). Swap the CONFIG block below
@@ -28,7 +28,7 @@
 import { BrowserProvider, JsonRpcProvider, Contract, formatUnits, parseUnits } from 'https://cdn.jsdelivr.net/npm/ethers@6.13.4/+esm';
 
 // ---------------------------------------------------------------------------
-// CONFIG — testnet rehearsal deployment (see t5d-checklist.md "Current
+// CONFIG — testnet preview deployment (see t5d-checklist.md "Current
 // testnet deployment"). Replace with mainnet values when that deploy lands.
 // ---------------------------------------------------------------------------
 const NETWORK = {
@@ -205,7 +205,7 @@ async function connectWallet(rawProvider, source) {
       dom.walletConnectBtn.disabled = false;
       dom.walletConnectBtn.textContent = 'Connect via WalletConnect';
     }
-    setStatus(`Connected as ${short(userAddress)} — wrong network. Switch to ${NETWORK.chainName} to continue (this rehearsal only runs there).`, 'warning');
+    setStatus(`Connected as ${short(userAddress)} — wrong network. Switch to ${NETWORK.chainName} to continue (this preview only runs there).`, 'warning');
     return;
   }
 
@@ -310,7 +310,7 @@ async function refreshPresaleSnapshot(isInitial) {
     if (isInitial && !userAddress) renderPublicSnapshot();
   } catch (err) {
     console.warn('T5D presale: could not read contract state', err);
-    if (isInitial) setStatus('Could not reach the Base Sepolia rehearsal contract right now — try refreshing.', 'warning');
+    if (isInitial) setStatus('Could not reach the Base Sepolia preview contract right now — try refreshing.', 'warning');
   }
 }
 
@@ -320,18 +320,18 @@ function renderPublicSnapshot() {
   let windowState;
   if (snapshot.finalized) {
     windowState = snapshot.softCapMet
-      ? 'This Community Funding rehearsal is finalized — its funding goal was met.'
-      : 'This Community Funding rehearsal is finalized — its funding goal was not met; contributors can refund.';
+      ? 'This Community Funding preview is finalized — its funding goal was met.'
+      : 'This Community Funding preview is finalized — its funding goal was not met; contributors can refund.';
   } else if (now < snapshot.start) {
-    windowState = 'This Community Funding rehearsal has not opened yet.';
+    windowState = 'This Community Funding preview has not opened yet.';
   } else if (now >= snapshot.end) {
-    windowState = 'This Community Funding rehearsal’s window has closed (awaiting finalize()).';
+    windowState = 'This Community Funding preview’s window has closed (awaiting finalize()).';
   } else {
-    windowState = 'This Community Funding rehearsal is open for contributions.';
+    windowState = 'This Community Funding preview is open for contributions.';
   }
   const raisedStr = Number(formatUnits(snapshot.raised, USDC_DECIMALS)).toLocaleString();
   const softCapStr = Number(formatUnits(snapshot.softCap, USDC_DECIMALS)).toLocaleString();
-  setStatus(`${windowState} Testnet total raised: $${raisedStr} of a $${softCapStr} rehearsal goal. Connect a wallet on ${NETWORK.chainName} to contribute.`, null);
+  setStatus(`${windowState} Testnet total raised: $${raisedStr} of a $${softCapStr} preview goal. Connect a wallet on ${NETWORK.chainName} to contribute.`, null);
 }
 
 async function refreshAccountState() {
@@ -349,7 +349,7 @@ async function refreshAccountState() {
     let msg = `Connected as ${short(userAddress)} on ${NETWORK.chainName}. USDC balance: $${balanceStr}.`;
     if (contribution.usdcContributed > 0n) {
       const already = Number(formatUnits(contribution.tokensOwed, T5D_DECIMALS)).toLocaleString(undefined, { maximumFractionDigits: 2 });
-      msg += ` You're already in for ${already} T5D (rehearsal-scale).`;
+      msg += ` You're already in for ${already} T5D (preview-scale).`;
     }
 
     // Refund button: only for wallets that contributed, only once refunds are open.
@@ -363,7 +363,7 @@ async function refreshAccountState() {
       if (dom.refundNote) dom.refundNote.textContent = 'The funding goal wasn’t reached in time, so your full contribution is available to withdraw.';
     }
 
-    if (dom.statusTag) dom.statusTag.textContent = windowOpen ? 'REHEARSAL LIVE' : 'REHEARSAL — WINDOW CLOSED';
+    if (dom.statusTag) dom.statusTag.textContent = windowOpen ? 'PREVIEW LIVE' : 'PREVIEW — WINDOW CLOSED';
     if (dom.networkTag) dom.networkTag.textContent = NETWORK.chainName.toUpperCase();
 
     if (windowOpen) {
@@ -372,12 +372,12 @@ async function refreshAccountState() {
       dom.connectBtn.textContent = selectedAsset === 'usdc' ? 'Contribute USDC' : 'Choose USDC to continue';
       dom.connectBtn.disabled = selectedAsset !== 'usdc';
       dom.connectBtn.onclick = onContributeClick;
-      if (dom.actionNote) dom.actionNote.textContent = 'Base Sepolia testnet rehearsal — no real funds are at risk. ETH/USDT auto-swap isn’t built yet, so USDC is the only live option for now.';
+      if (dom.actionNote) dom.actionNote.textContent = 'Base Sepolia testnet preview — no real funds are at risk. ETH/USDT auto-swap isn’t built yet, so USDC is the only live option for now.';
       setStatus(msg, 'ok');
     } else {
       dom.connectBtn.textContent = 'Contribution window not open';
       dom.connectBtn.disabled = true;
-      if (dom.actionNote) dom.actionNote.textContent = 'This rehearsal contract’s contribution window isn’t currently open (see status above) — ask whoever’s running the rehearsal for a fresh testnet deploy to try the live flow.';
+      if (dom.actionNote) dom.actionNote.textContent = 'This preview contract’s contribution window isn’t currently open (see status above) — ask whoever’s running the preview for a fresh testnet deploy to try the live flow.';
       setStatus(msg, 'ok');
     }
   } catch (err) {
@@ -402,7 +402,7 @@ function updateQuote() {
     const tokens = (usdcAmount * (10n ** BigInt(T5D_DECIMALS))) / snapshot.price;
     if (dom.quoteUsdcValue) dom.quoteUsdcValue.textContent = `$${amount.toLocaleString()}`;
     if (dom.quoteT5dValue) dom.quoteT5dValue.textContent = `${Number(formatUnits(tokens, T5D_DECIMALS)).toLocaleString(undefined, { maximumFractionDigits: 2 })} T5D`;
-    if (dom.quoteNote) dom.quoteNote.textContent = 'Quote uses the live on-chain rehearsal price. The exact amount is fixed when your contribution transaction confirms.';
+    if (dom.quoteNote) dom.quoteNote.textContent = 'Quote uses the live on-chain preview price. The exact amount is fixed when your contribution transaction confirms.';
     if (userAddress && selectedAsset === 'usdc' && dom.connectBtn) dom.connectBtn.disabled = false;
   } catch {
     if (dom.quoteT5dValue) dom.quoteT5dValue.textContent = 'Invalid amount';
@@ -437,11 +437,11 @@ async function onContributeClick() {
     }
     const tokensForThis = (usdcAmount * (10n ** BigInt(T5D_DECIMALS))) / snapshot.price;
     if (contribution.tokensOwed + tokensForThis > snapshot.perWalletCap) {
-      setStatus('That amount would exceed this rehearsal’s per-wallet cap.', 'warning');
+      setStatus('That amount would exceed this preview’s per-wallet cap.', 'warning');
       return;
     }
     if (snapshot.sold + tokensForThis > snapshot.supply) {
-      setStatus('That amount would exceed the remaining rehearsal supply.', 'warning');
+      setStatus('That amount would exceed the remaining preview supply.', 'warning');
       return;
     }
 
@@ -457,7 +457,7 @@ async function onContributeClick() {
     const tx = await presaleWrite.contribute(usdcAmount);
     await tx.wait();
 
-    setStatus(`Success — you contributed $${dom.amountInput.value.trim()} USDC on the rehearsal contract. Reload to see your updated allocation.`, 'ok');
+    setStatus(`Success — you contributed $${dom.amountInput.value.trim()} USDC on the preview contract. Reload to see your updated allocation.`, 'ok');
     dom.connectBtn.textContent = 'Contribution complete';
     await refreshPresaleSnapshot(false);
     await refreshAccountState();
@@ -513,7 +513,7 @@ function friendlyError(err) {
   if (/user rejected/i.test(raw)) return 'Request cancelled in your wallet.';
   if (/not started/i.test(raw)) return 'The contribution window has not opened yet.';
   if (/window closed/i.test(raw)) return 'The contribution window has closed.';
-  if (/already finalized/i.test(raw)) return 'This Community Funding rehearsal has already been finalized.';
+  if (/already finalized/i.test(raw)) return 'This Community Funding preview has already been finalized.';
   if (/soft cap met|no refund/i.test(raw)) return 'Withdrawals aren’t open — the funding goal was reached.';
   if (/nothing to refund|already refunded/i.test(raw)) return 'There’s nothing left to withdraw for this wallet.';
   if (/exceeds per-wallet cap/i.test(raw)) return 'That would exceed the per-wallet cap.';
